@@ -1,13 +1,22 @@
 // Import necessary libraries
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axiosClient from "../axiosClient";
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  CircularProgress,
+  Card,
+  CardContent,
+} from "@mui/material";
 
 // Define the PatientDataById component
 const PatientDataById = () => {
   // State to store patient data
   const [patient, setPatient] = useState(null);
   // State to manage input value for patient ID
-  const [patientId, setPatientId] = useState('');
+  const [patientId, setPatientId] = useState("");
   // State to manage loading status
   const [loading, setLoading] = useState(false);
   // State to manage error messages
@@ -16,7 +25,7 @@ const PatientDataById = () => {
   // Function to fetch patient data by ID
   const fetchPatientDataById = async () => {
     if (!patientId) {
-      setError('Please enter a valid Patient ID');
+      setError("Please enter a valid Patient ID");
       return;
     }
 
@@ -26,61 +35,105 @@ const PatientDataById = () => {
       setPatient(null); // Clear previous patient data
 
       // Fetch data from the API
-      const response = await axios.get(`/api/patients/${patientId}`);
+      const response = await axiosClient.get(`/patients/${patientId}`);
 
       // Log the response to debug the structure
-      console.log('Fetched Patient Data:', response.data);
+      console.log("Fetched Patient Data:", response.data.PatientDataById);
+      console.log("done");
 
       // Check if the response contains the expected data
       if (response.data) {
         setPatient(response.data);
       } else {
-        setError('No patient data found.');
+        setError("No patient data found.");
       }
     } catch (err) {
       // Set error message if request fails
-      setError('Failed to fetch patient data. Please check the Patient ID and try again.');
-      console.error('Error fetching patient data:', err); // Log error for debugging
+      setError(
+        "Failed to fetch patient data. Please check the Patient ID and try again."
+      );
+      console.error("Error fetching patient data:", err); // Log error for debugging
     } finally {
       setLoading(false); // Reset loading state
     }
   };
 
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 2,
+        padding: 3,
+        maxWidth: 400,
+        margin: "auto",
+        mt: 4,
+      }}
+    >
       {/* Input field for patient ID */}
-      <input
-        type="text"
-        placeholder="Enter Patient ID"
+      <TextField
+        label="Enter Patient ID"
+        variant="outlined"
         value={patientId}
         onChange={(e) => setPatientId(e.target.value)}
+        fullWidth
+        error={Boolean(error)}
+        helperText={error}
       />
 
       {/* Button to fetch patient data */}
-      <button onClick={fetchPatientDataById}>Get Patient Data</button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={fetchPatientDataById}
+        disabled={loading}
+        fullWidth
+      >
+        Get Patient Data
+      </Button>
 
-      {/* Show loading message if data is being fetched */}
-      {loading && <p>Loading...</p>}
-
-      {/* Show error message if an error occurs */}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {/* Show loading spinner if data is being fetched */}
+      {loading && <CircularProgress />}
 
       {/* Display patient data if available */}
-      {patient ? (
-        <div>
-          <h3>Patient Details</h3>
-          <p><strong>Patient ID:</strong> {patient.patientId}</p>
-          <p><strong>NIC:</strong> {patient.nic}</p>
-          <p><strong>First Name:</strong> {patient.firstName}</p>
-          <p><strong>Last Name:</strong> {patient.lastName}</p>
-          <p><strong>Gender:</strong> {patient.gender}</p>
-          <p><strong>Date of Birth:</strong> {new Date(patient.dateOfBirth).toLocaleDateString()}</p>
-          <p><strong>Email:</strong> {patient.email || 'N/A'}</p>
-        </div>
-      ) : (
-        !loading && !error && <p>No patient data available.</p> // Display this if no data is available and no errors
+      {patient && (
+        <Card sx={{ width: "100%", mt: 2 }}>
+          <CardContent>
+            <Typography variant="h5" gutterBottom>
+              Patient Details
+            </Typography>
+            <Typography>
+              <strong>Patient ID:</strong> {patient.patientId}
+            </Typography>
+            <Typography>
+              <strong>NIC:</strong> {patient.nic}
+            </Typography>
+            <Typography>
+              <strong>First Name:</strong> {patient.firstName}
+            </Typography>
+            <Typography>
+              <strong>Last Name:</strong> {patient.lastName}
+            </Typography>
+            <Typography>
+              <strong>Gender:</strong> {patient.gender}
+            </Typography>
+            <Typography>
+              <strong>Date of Birth:</strong>{" "}
+              {new Date(patient.dateOfBirth).toLocaleDateString()}
+            </Typography>
+            <Typography>
+              <strong>Email:</strong> {patient.email || "N/A"}
+            </Typography>
+          </CardContent>
+        </Card>
       )}
-    </div>
+
+      {/* Show message when no patient data is available and no errors */}
+      {!patient && !loading && !error && (
+        <Typography>No patient data available.</Typography>
+      )}
+    </Box>
   );
 };
 
