@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axiosClient from "../axiosClient";
 import { useParams } from "react-router-dom";
 import {
@@ -9,16 +9,16 @@ import {
   Paper,
 } from "@mui/material";
 
-const DeletePatient = () => {
-  const { patient_id } = useParams(); // Get patient_id from the URL
+const DeleteDoctor = () => {
+  const { doctor_id } = useParams(); // Get doctor_id from the URL
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
   const handleDelete = async () => {
-    const patient_id = 1;
-    if (!patient_id) {
-      setError("Patient ID is missing from the URL.");
+    const doctor_id = 1;
+    if (!doctor_id) {
+      setError("Doctor ID is missing from the URL.");
       return;
     }
 
@@ -27,19 +27,34 @@ const DeletePatient = () => {
       setError(null);
       setSuccess(null);
 
-      // Send DELETE request to delete patient
+      // Send DELETE request to delete doctor
       const response = await axiosClient.delete(
-        `/admin/delete/patient/${patient_id}`
+        `/admin/delete/doctor/${doctor_id}`
       );
 
       if (response.status === 200) {
-        setSuccess("Patient deleted successfully!");
+        setSuccess("Doctor deleted successfully!");
       } else {
-        setError("Failed to delete patient. Please try again.");
+        setError(`Failed to delete doctor. Status code: ${response.status}`);
       }
     } catch (err) {
-      setError("Failed to delete patient. Please try again.");
-      console.error("Error deleting patient:", err);
+      if (err.response) {
+        // Server responded with a status other than 2xx
+        setError(
+          `Failed to delete doctor. Server responded with status ${
+            err.response.status
+          }: ${err.response.data.message || "Unknown error"}`
+        );
+      } else if (err.request) {
+        // Request was made but no response was received
+        setError(
+          "No response from the server. Please check your network connection."
+        );
+      } else {
+        // Something happened in setting up the request
+        setError(`Failed to delete doctor: ${err.message}`);
+      }
+      console.error("Error deleting doctor:", err);
     } finally {
       setLoading(false);
     }
@@ -60,7 +75,7 @@ const DeletePatient = () => {
         mt: 4,
       }}
     >
-      <Typography variant="h6">Delete Patient</Typography>
+      <Typography variant="h6">Delete Doctor</Typography>
 
       <Button
         variant="contained"
@@ -70,7 +85,7 @@ const DeletePatient = () => {
         fullWidth
         sx={{ marginTop: 2 }}
       >
-        {loading ? <CircularProgress size={24} /> : "Delete Patient"}
+        {loading ? <CircularProgress size={24} /> : "Delete Doctor"}
       </Button>
 
       {error && <Typography color="error">{error}</Typography>}
@@ -79,4 +94,4 @@ const DeletePatient = () => {
   );
 };
 
-export default DeletePatient;
+export default DeleteDoctor;

@@ -10,6 +10,12 @@ import FetchAllPatients from "../components/GetAllPatients";
 import UpdatePatient from "../components/UpdatePatient";
 import DeletePatient from "../components/DeletePatient";
 import MachineLearningData from "../components/MachineLearningData";
+import DeleteDoctor from "../components/DeleteDoctor";
+import UpdateDoctor from "../components/UpdateDoctor";
+import DoctorPatients from "../components/GetRegisteredPatientsForDoctor";
+import SearchDoctors from "../components/SearchDoctors";
+import SearchPatients from "../components/SearchPatients";
+import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
 import PredictionResult from "../components/PredictionResult";
 
 export default function HomePage() {
@@ -24,12 +30,20 @@ export default function HomePage() {
       <FetchAllDoctors />
       <FetchAllPatients />
       <UpdatePatient />
+      <UpdateDoctor />
       <DeletePatient />
+      <DeleteDoctor />
+      <DoctorPatients />
+      <SearchDoctors />
+      <SearchPatients />
+      <RegisterPatientToDoctor />
+
       <hr/>
       <MachineLearningData/>
       <hr/>
       <PredictionResult/>
       
+
     </div>
   );
 }
