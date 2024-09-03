@@ -55,8 +55,8 @@ public class DoctorController {
         return ResponseEntity.ok(patients);
     }
 
-    @GetMapping("/patient/{patientId}/{doctorId}/")
-    public ResponseEntity<PatientDTO> getPatientById(@PathVariable("patientId") Long patientId,@PathVariable("doctorId") Long doctorId){
+    @GetMapping("/patient/{patientId}/{doctorId}")
+    public ResponseEntity<PatientDTO> getRegisteredPatientsByDoctorId(@PathVariable("patientId") Long patientId,@PathVariable("doctorId") Long doctorId){
         PatientDTO patient = patientService.getPatientByIdForDoctor(patientId,doctorId);
         return ResponseEntity.ok(patient);
     }

@@ -9,6 +9,13 @@ import FetchAllDoctors from "../components/GetAllDoctors";
 import FetchAllPatients from "../components/GetAllPatients";
 import UpdatePatient from "../components/UpdatePatient";
 import DeletePatient from "../components/DeletePatient";
+import MachineLearningData from "../components/MachineLearningData";
+import DeleteDoctor from "../components/DeleteDoctor";
+import UpdateDoctor from "../components/UpdateDoctor";
+import DoctorPatients from "../components/GetRegisteredPatientsForDoctor";
+import SearchDoctors from "../components/SearchDoctors";
+import SearchPatients from "../components/SearchPatients";
+import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
 
 export default function HomePage() {
   return (
@@ -22,7 +29,14 @@ export default function HomePage() {
       <FetchAllDoctors />
       <FetchAllPatients />
       <UpdatePatient />
+      <UpdateDoctor />
       <DeletePatient />
+      <DeleteDoctor />
+      <DoctorPatients />
+      <SearchDoctors />
+      <SearchPatients />
+      <RegisterPatientToDoctor />
+      <MachineLearningData />
     </div>
   );
 }
