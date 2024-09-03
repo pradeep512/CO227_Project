@@ -1,9 +1,17 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pandas as pd
+
+# Initialize Flask app
+app = Flask(__name__)
+
+# Enable CORS
+CORS(app)
 
 # Load and preprocess the dataset
 heart_data = pd.read_csv('heart_disease_data.csv')
@@ -41,11 +49,6 @@ def testing_prediction(input_data):
     }
     return dataset
 
-
-
-# Initialize Flask app
-app = Flask(__name__)
-
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
@@ -55,4 +58,6 @@ def predict():
         return jsonify(dataset)
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(port=8005, debug=True)
+    
+CORS(app, resources={r"/predict": {"origins": "http://localhost:3000"}})

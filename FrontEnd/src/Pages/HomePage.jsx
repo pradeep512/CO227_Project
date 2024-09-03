@@ -16,6 +16,7 @@ import DoctorPatients from "../components/GetRegisteredPatientsForDoctor";
 import SearchDoctors from "../components/SearchDoctors";
 import SearchPatients from "../components/SearchPatients";
 import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
+import PredictionResult from "../components/PredictionResult";
 
 export default function HomePage() {
   return (
@@ -36,7 +37,13 @@ export default function HomePage() {
       <SearchDoctors />
       <SearchPatients />
       <RegisterPatientToDoctor />
-      <MachineLearningData />
+
+      <hr/>
+      <MachineLearningData/>
+      <hr/>
+      <PredictionResult/>
+      
+
     </div>
   );
 }
