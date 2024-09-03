@@ -9,6 +9,8 @@ import FetchAllDoctors from "../components/GetAllDoctors";
 import FetchAllPatients from "../components/GetAllPatients";
 import UpdatePatient from "../components/UpdatePatient";
 import DeletePatient from "../components/DeletePatient";
+import MachineLearningData from "../components/MachineLearningData";
+import PredictionResult from "../components/PredictionResult";
 
 export default function HomePage() {
   return (
@@ -23,6 +25,11 @@ export default function HomePage() {
       <FetchAllPatients />
       <UpdatePatient />
       <DeletePatient />
+      <hr/>
+      <MachineLearningData/>
+      <hr/>
+      <PredictionResult/>
+      
     </div>
   );
 }
