@@ -1,6 +1,6 @@
 import AppBarGeneral from "../components/AppBarGeneral";
 import PredictionButton from "../components/PredictionButton";
-import PatientDetailsSubmit from "./PatientDetailsSubmit";
+import PatientSymptomsSubmit from "./PatientSymptomsSubmit";
 import PatientClinicalDataSubmission from "./PatientClinicalDataSubmission";
 import DoctorExaminationDataSubmission from "./DoctorExaminationDataSubmission";
 import PatientData from "./PatientData";
@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <div>
       <AppBarGeneral />
-      <PatientDetailsSubmit />
+      <PatientSymptomsSubmit />
       <PatientClinicalDataSubmission />
       <DoctorExaminationDataSubmission />
       <PatientData />
@@ -38,12 +38,10 @@ export default function HomePage() {
       <SearchPatients />
       <RegisterPatientToDoctor />
 
-      <hr/>
-      <MachineLearningData/>
-      <hr/>
-      <PredictionResult/>
-      
-
+      <hr />
+      <MachineLearningData />
+      <hr />
+      <PredictionResult />
     </div>
   );
 }
