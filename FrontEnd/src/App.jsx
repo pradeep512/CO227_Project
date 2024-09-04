@@ -11,6 +11,12 @@ import Prediction from './Pages/Prediction'; // Adjust paths and components
 import PatientData from './Pages/PatientData';
 import SubmitPatientDetails from './Pages/SubmitPatientDetails';
 import Dashboard from "./Pages/DoctorHomePage";
+import PatientsHomePage from "./Pages/PatientHomePage";
+import ViewDoctorsData from "./Pages/ViewDoctorsData";
+import ViewOwnRecords from "./Pages/ViewOwnRecords";
+import AdminPredictionDetails from "./Pages/AdminPredictionDetails";
+import AdminDoctorDetails from "./Pages/AdminDoctorDetails";
+import AdminPatientDetails from "./Pages/AdminPatientDetails";
 
 function App() {
     // let Component;
@@ -60,10 +66,17 @@ function App() {
                 <Route path="/homeusers" element={<HomeUsersPage />} />
 
 
+                <Route path="/" element={<PatientsHomePage />} />
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/prediction" element={<Prediction />} />
                 <Route path="/view-patient-details" element={<PatientData />} />
                 <Route path="/submit-patient-details" element={<SubmitPatientDetails />} />
+                <Route path="/view-doctors-data" element={<ViewDoctorsData />} />
+                <Route path="/view-own-records" element={<ViewOwnRecords />} /> 
+                <Route path="/prediction-details" element={<AdminPredictionDetails />} /> {/* Prediction Details Page */}
+                <Route path="/doctor-details" element={<AdminDoctorDetails />} /> {/* Doctor Details Page */}
+                <Route path="/patient-details" element={<AdminPatientDetails />} /> {/* Patient Details Page */}
+
             </Routes>
             </BrowserRouter>
         </div>

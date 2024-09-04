@@ -20,7 +20,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center p-8">
       <h1 className="text-center text-4xl font-extrabold text-white mb-8 shadow-md p-4 rounded-md">
-        Patient Management System
+        Doctor Home Page
       </h1>
       <div className="flex flex-col items-center gap-6">
         <button
