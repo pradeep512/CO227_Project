@@ -18,6 +18,9 @@ import SearchPatients from "../components/SearchPatients";
 import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
 import PredictionResult from "../components/PredictionResult";
 import Dashboard from "./DoctorHomePage";
+import PatientsHomePage from "./PatientHomePage";
+import AdminHomePage from "./AdminHomePage";
+
 
 
 export default function HomePage() {
@@ -45,6 +48,8 @@ export default function HomePage() {
       <hr/>
       <PredictionResult/> */}
       <Dashboard/>
+      <PatientsHomePage/>
+      <AdminHomePage/>
     
     </div>
   );
