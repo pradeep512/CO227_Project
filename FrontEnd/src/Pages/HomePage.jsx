@@ -19,16 +19,18 @@ import PredictionResult from "../components/PredictionResult";
 import Dashboard from "./DoctorHomePage";
 import PatientsHomePage from "./PatientHomePage";
 import AdminHomePage from "./AdminHomePage";
+import PatientDataById from "../components/GetPatientSymptomsById";
+
 
 
 export default function HomePage() {
   return (
     <div>
-      <AppBarGeneral />
+      {/* <AppBarGeneral />
       <PatientClinicalDataSubmission />
       <DoctorExaminationDataSubmission />
       {/* <PatientData /> */}
-      <DoctorDataById />
+      {/* <DoctorDataById />
       <FetchAllDoctors />
       <FetchAllPatients />
       <UpdatePatient />
@@ -43,10 +45,12 @@ export default function HomePage() {
       <hr/>
       <MachineLearningData/>
       <hr/>
-      <PredictionResult/> */}
+      <PredictionResult/>  */} 
       <Dashboard/>
       <PatientsHomePage/>
       <AdminHomePage/>
+      <PatientDataById/>
+    
     </div>
   );
 }
