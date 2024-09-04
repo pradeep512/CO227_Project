@@ -1,6 +1,5 @@
 import AppBarGeneral from "../components/AppBarGeneral";
 import PredictionButton from "../components/PredictionButton";
-import PatientDetailsSubmit from "../components/PatientDetailsSubmit";
 import PatientClinicalDataSubmission from "../components/PatientClinicalDataSubmission";
 import DoctorExaminationDataSubmission from "../components/DoctorExaminationDataSubmission";
 import PatientData from "./PatientData";
@@ -20,18 +19,16 @@ import PredictionResult from "../components/PredictionResult";
 import Dashboard from "./DoctorHomePage";
 import PatientsHomePage from "./PatientHomePage";
 import AdminHomePage from "./AdminHomePage";
-import PatientDataById from "../components/GetPatientSymptomsById";
 
 
 
 export default function HomePage() {
   return (
     <div>
-      {/* <AppBarGeneral />
-      <PatientDetailsSubmit />
+      <AppBarGeneral />
       <PatientClinicalDataSubmission />
       <DoctorExaminationDataSubmission />
-      <PatientData />
+      {/* <PatientData /> */}
       <DoctorDataById />
       <FetchAllDoctors />
       <FetchAllPatients />
@@ -47,11 +44,10 @@ export default function HomePage() {
       <hr/>
       <MachineLearningData/>
       <hr/>
-      <PredictionResult/> */}
+      <PredictionResult/> 
       <Dashboard/>
       <PatientsHomePage/>
       <AdminHomePage/>
-      <PatientDataById/>
     
     </div>
   );
