@@ -20,6 +20,7 @@ import PredictionResult from "../components/PredictionResult";
 import Dashboard from "./DoctorHomePage";
 import PatientsHomePage from "./PatientHomePage";
 import AdminHomePage from "./AdminHomePage";
+import PatientDataById from "../components/GetPatientSymptomsById";
 
 
 
@@ -50,6 +51,7 @@ export default function HomePage() {
       <Dashboard/>
       <PatientsHomePage/>
       <AdminHomePage/>
+      <PatientDataById/>
     
     </div>
   );
