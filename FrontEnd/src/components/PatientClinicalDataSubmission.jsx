@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axiosClient from "../axiosClient"; // Adjust the import based on your project structure
 import { useNavigate } from "react-router-dom";
 
-const PatientDetailsSubmit = () => {
+const PatientClinicalDataSubmission = () => {
   // State to hold form data
   const [formData, setFormData] = useState({
     diagnosisOfHeartDisease: false,
@@ -266,4 +266,4 @@ const PatientDetailsSubmit = () => {
   );
 };
 
-export default PatientDetailsSubmit;
+export default PatientClinicalDataSubmission;

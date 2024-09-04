@@ -7,6 +7,10 @@ import RegisterPage from "./Pages/RegisterPage";
 import RegisterPatientPage from "./Pages/RegisterPatientPage";
 import HomeUsersPage from "./Pages/HomeUsersPage";
 import { BrowserRouter,Routes, Route } from "react-router-dom";
+import Prediction from './Pages/Prediction'; // Adjust paths and components
+import PatientData from './Pages/PatientData';
+import SubmitPatientDetails from './Pages/SubmitPatientDetails';
+import Dashboard from "./Pages/DoctorHomePage";
 
 function App() {
     // let Component;
@@ -54,6 +58,12 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/registerpatient" element={<RegisterPatientPage />} />
                 <Route path="/homeusers" element={<HomeUsersPage />} />
+
+
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/prediction" element={<Prediction />} />
+                <Route path="/view-patient-details" element={<PatientData />} />
+                <Route path="/submit-patient-details" element={<SubmitPatientDetails />} />
             </Routes>
             </BrowserRouter>
         </div>
