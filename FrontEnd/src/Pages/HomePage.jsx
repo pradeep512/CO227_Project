@@ -1,8 +1,8 @@
 import AppBarGeneral from "../components/AppBarGeneral";
 import PredictionButton from "../components/PredictionButton";
-import PatientDetailsSubmit from "./PatientDetailsSubmit";
-import PatientClinicalDataSubmission from "./PatientClinicalDataSubmission";
-import DoctorExaminationDataSubmission from "./DoctorExaminationDataSubmission";
+import PatientDetailsSubmit from "../components/PatientDetailsSubmit";
+import PatientClinicalDataSubmission from "../components/PatientClinicalDataSubmission";
+import DoctorExaminationDataSubmission from "../components/DoctorExaminationDataSubmission";
 import PatientData from "./PatientData";
 import DoctorDataById from "../components/GetDoctorById";
 import FetchAllDoctors from "../components/GetAllDoctors";
@@ -17,11 +17,13 @@ import SearchDoctors from "../components/SearchDoctors";
 import SearchPatients from "../components/SearchPatients";
 import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
 import PredictionResult from "../components/PredictionResult";
+import Dashboard from "./DoctorHomePage";
+
 
 export default function HomePage() {
   return (
     <div>
-      <AppBarGeneral />
+      {/* <AppBarGeneral />
       <PatientDetailsSubmit />
       <PatientClinicalDataSubmission />
       <DoctorExaminationDataSubmission />
@@ -41,9 +43,9 @@ export default function HomePage() {
       <hr/>
       <MachineLearningData/>
       <hr/>
-      <PredictionResult/>
-      
-
+      <PredictionResult/> */}
+      <Dashboard/>
+    
     </div>
   );
 }
