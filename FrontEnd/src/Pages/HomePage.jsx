@@ -1,6 +1,5 @@
 import AppBarGeneral from "../components/AppBarGeneral";
 import PredictionButton from "../components/PredictionButton";
-import PatientDetailsSubmit from "../components/PatientDetailsSubmit";
 import PatientClinicalDataSubmission from "../components/PatientClinicalDataSubmission";
 import DoctorExaminationDataSubmission from "../components/DoctorExaminationDataSubmission";
 import PatientData from "./PatientData";
@@ -22,15 +21,13 @@ import PatientsHomePage from "./PatientHomePage";
 import AdminHomePage from "./AdminHomePage";
 
 
-
 export default function HomePage() {
   return (
     <div>
-      {/* <AppBarGeneral />
-      <PatientDetailsSubmit />
+      <AppBarGeneral />
       <PatientClinicalDataSubmission />
       <DoctorExaminationDataSubmission />
-      <PatientData />
+      {/* <PatientData /> */}
       <DoctorDataById />
       <FetchAllDoctors />
       <FetchAllPatients />
@@ -50,7 +47,6 @@ export default function HomePage() {
       <Dashboard/>
       <PatientsHomePage/>
       <AdminHomePage/>
-    
     </div>
   );
 }
