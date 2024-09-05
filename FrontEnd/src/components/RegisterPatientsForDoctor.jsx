@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  MenuItem,
-  TextField,
-  Typography,
-  Paper,
-} from "@mui/material";
+import { Box, Button, TextField, Typography, Paper } from "@mui/material";
 import SearchDoctors from "./SearchDoctors";
 import SearchPatients from "./SearchPatients"; // Assuming these components are imported
 import axiosClient from "../axiosClient";
@@ -64,30 +57,42 @@ const RegisterPatientToDoctor = () => {
     >
       <Typography variant="h6">Register Patient to Doctor</Typography>
 
-      <Box sx={{ width: "100%", marginBottom: 2 }}>
-        <Typography variant="subtitle1">Select Doctor:</Typography>
-        <SearchDoctors onSelectDoctor={handleDoctorSelect} />
-        <TextField
-          label="Selected Doctor ID"
-          variant="outlined"
-          value={selectedDoctorId}
-          disabled
-          fullWidth
-          sx={{ marginTop: 2 }}
-        />
-      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 2,
+          width: "100%",
+          marginBottom: 2,
+        }}
+      >
+        {/* Doctor search section */}
+        <Box sx={{ flex: 1 }}>
+          <Typography variant="subtitle1">Select Doctor:</Typography>
+          <SearchDoctors onSelectDoctor={handleDoctorSelect} />
+          <TextField
+            label="Selected Doctor ID"
+            variant="outlined"
+            value={selectedDoctorId}
+            disabled
+            fullWidth
+            sx={{ marginTop: 2 }}
+          />
+        </Box>
 
-      <Box sx={{ width: "100%", marginBottom: 2 }}>
-        <Typography variant="subtitle1">Select Patient:</Typography>
-        <SearchPatients onSelectPatient={handlePatientSelect} />
-        <TextField
-          label="Selected Patient ID"
-          variant="outlined"
-          value={selectedPatientId}
-          disabled
-          fullWidth
-          sx={{ marginTop: 2 }}
-        />
+        {/* Patient search section */}
+        <Box sx={{ flex: 1 }}>
+          <Typography variant="subtitle1">Select Patient:</Typography>
+          <SearchPatients onSelectPatient={handlePatientSelect} />
+          <TextField
+            label="Selected Patient ID"
+            variant="outlined"
+            value={selectedPatientId}
+            disabled
+            fullWidth
+            sx={{ marginTop: 2 }}
+          />
+        </Box>
       </Box>
 
       <Button

@@ -41,7 +41,7 @@ const PatientDataById = () => {
       const patientResponse = await axiosClient.get(`/patients/${patientId}`);
       // Fetch symptoms data
       const symptomsResponse = await axiosClient.get(
-        `/patients/${patientId}/symptoms`
+        `/doctors/patients/${patientId}/symptoms`
       );
 
       // Check if the response contains the expected data

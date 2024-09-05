@@ -1,50 +1,127 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Box, Button, Typography, Paper } from "@mui/material";
 
 const AdminHomePage = () => {
   const navigate = useNavigate();
 
   // Handler functions for button clicks
-  const handlePredictionDetails = () => {
-    navigate('/prediction-details');
+  const handlePrediction = () => {
+    navigate("/prediction");
   };
 
-  const handleDoctorDetails = () => {
-    navigate('/doctor-details');
+  const handleViewDoctorDetails = () => {
+    navigate("/view-doctor-details");
   };
 
-  const handlePatientDetails = () => {
-    navigate('/patient-details');
+  const handleViewPatientDetails = () => {
+    navigate("/view-patient-details");
   };
 
   return (
-    <div className="dashboard min-h-screen bg-gradient-to-r from-blue-400 via-green-500 to-yellow-500 flex flex-col items-center justify-center p-8">
-      <h1 className="text-center text-4xl font-extrabold text-white mb-8 shadow-md p-4 rounded-md">
-        Admin Home Page
-      </h1>
-      <div className="flex flex-col items-center gap-6">
-        <button
-          onClick={handlePredictionDetails}
-          className="w-60 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
+    <Box
+      sx={{
+        minHeight: "60vh", // Reduced the height
+        background: "linear-gradient(to right, #7b1fa2, #e91e63, #f44336)", // Changed gradient colors to match the example
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        p: 2, // Reduced padding
+      }}
+    >
+      <Paper
+        elevation={8}
+        sx={{
+          padding: 2, // Reduced padding
+          borderRadius: 3,
+          textAlign: "center",
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          backdropFilter: "blur(5px)",
+          mb: 4, // Reduced margin below
+        }}
+      >
+        <Typography
+          variant="h4" // Reduced the size of the heading
+          component="h1"
+          gutterBottom
+          sx={{
+            color: "#fff",
+            fontWeight: "bold",
+            textShadow: "2px 2px 5px rgba(0, 0, 0, 0.4)",
+          }}
         >
-          Prediction Details
-        </button>
+          Admin Dashboard
+        </Typography>
+      </Paper>
 
-        <button
-          onClick={handleDoctorDetails}
-          className="w-60 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: 2, // Reduced gap between buttons
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Button
+          onClick={handlePrediction}
+          variant="contained"
+          color="primary"
+          size="medium" // Changed size from large to medium
+          sx={{
+            width: { xs: "100%", md: "auto" },
+            padding: "8px 24px", // Reduced padding
+            fontSize: "1rem", // Reduced font size
+            boxShadow: "0 3px 10px rgba(0, 0, 0, 0.2)",
+            transition: "transform 0.3s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
         >
-          Doctor Details
-        </button>
+          Prediction
+        </Button>
 
-        <button
-          onClick={handlePatientDetails}
-          className="w-60 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
+        <Button
+          onClick={handleViewDoctorDetails}
+          variant="contained"
+          color="success"
+          size="medium" // Changed size from large to medium
+          sx={{
+            width: { xs: "100%", md: "auto" },
+            padding: "8px 24px", // Reduced padding
+            fontSize: "1rem", // Reduced font size
+            boxShadow: "0 3px 10px rgba(0, 0, 0, 0.2)",
+            transition: "transform 0.3s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
         >
-          Patient Details
-        </button>
-      </div>
-    </div>
+          View Doctor Details
+        </Button>
+
+        <Button
+          onClick={handleViewPatientDetails}
+          variant="contained"
+          color="error"
+          size="medium" // Changed size from large to medium
+          sx={{
+            width: { xs: "100%", md: "auto" },
+            padding: "8px 24px", // Reduced padding
+            fontSize: "1rem", // Reduced font size
+            boxShadow: "0 3px 10px rgba(0, 0, 0, 0.2)",
+            transition: "transform 0.3s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          View Patient Details
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
