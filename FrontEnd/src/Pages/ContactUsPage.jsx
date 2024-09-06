@@ -32,7 +32,7 @@ export default function ContactUsPage() {
                 <Grid item xs={12} md={6}>
                     <Paper
                         sx={{
-                            padding: 4,
+                            padding: 0.5,
                             width: "100%",
                             backgroundColor: "rgba(255, 255, 255, 0.2)",
                             borderRadius: 4,
@@ -42,9 +42,9 @@ export default function ContactUsPage() {
                             variant="h5"
                             component="h2"
                             gutterBottom
-                            sx={{ color: "#fff" }}
+                            sx={{ color: "#fff", paddingLeft:1}}
                         >
-                            Get in Touch
+                            <h3>Get in Touch</h3>
                         </Typography>
                         <Box
                             component="form"
@@ -146,7 +146,7 @@ export default function ContactUsPage() {
                 <Grid item xs={12} md={6}>
                     <Paper
                         sx={{
-                            padding: 4,
+                            padding: 0.5,
                             width: "100%",
                             backgroundColor: "rgba(255, 255, 255, 0.2)",
                             borderRadius: 4,
@@ -158,18 +158,18 @@ export default function ContactUsPage() {
                             gutterBottom
                             sx={{ color: "#fff" }}
                         >
-                            Contact Information
+                            <h3>Contact Information</h3>
                         </Typography>
-                        <Typography variant="body1" gutterBottom sx={{ color: "#fff" }}>
+                        <Typography variant="body1" gutterBottom sx={{ color: "#fff", paddingLeft:3 }}>
                             Email:{" "}
                             <a href="mailto:info@yourwebsite.com" style={{ color: "#fff" }}>
                                 info@yourwebsite.com
                             </a>
                         </Typography>
-                        <Typography variant="body1" gutterBottom sx={{ color: "#fff" }}>
+                        <Typography variant="body1" gutterBottom sx={{ color: "#fff", paddingLeft:3 }}>
                             Phone: (123) 456-7890
                         </Typography>
-                        <Typography variant="body1" gutterBottom sx={{ color: "#fff" }}>
+                        <Typography variant="body1" gutterBottom sx={{ color: "#fff", paddingLeft:3 }}>
                             Address: 123 Main Street, Anytown, USA
                         </Typography>
                     </Paper>
