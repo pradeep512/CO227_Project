@@ -7,6 +7,9 @@ import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
 import PatientClinicalDataById from "../components/GetClinicalDataById";
 import PatientSymptomDataById from "../components/GetPatientSymptomsById"
 import PatientExaminationDataById from "../components/GetDoctorExaminationsById"
+import PatientSymptomDataByBothId from "../components/GetSymptomsDataByBothIDs"
+import UpdateSymptoms from "../components/UpdateSymptomsByBothIds"
+import DeleteSymptoms from "../components/DeleteSymptomsByBothIds"
 
 export default function HomePage() {
   return (
@@ -86,6 +89,9 @@ export default function HomePage() {
             <PatientClinicalDataById/>
             <PatientSymptomDataById/>
             <PatientExaminationDataById/>
+            <PatientSymptomDataByBothId/>
+            <DeleteSymptoms/>
+            <UpdateSymptoms/>
           </Paper>
         </Grid>
       </Grid>
