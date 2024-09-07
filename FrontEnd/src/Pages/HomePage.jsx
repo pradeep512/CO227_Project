@@ -4,6 +4,9 @@ import Dashboard from "./DoctorHomePage";
 import PatientsHomePage from "./PatientHomePage";
 import AdminHomePage from "./AdminHomePage";
 import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
+import PatientClinicalDataById from "../components/GetClinicalDataById";
+import PatientSymptomDataById from "../components/GetPatientSymptomsById"
+import PatientExaminationDataById from "../components/GetDoctorExaminationsById"
 
 export default function HomePage() {
   return (
@@ -80,6 +83,9 @@ export default function HomePage() {
             </Typography>
             <AdminHomePage />
             <RegisterPatientToDoctor />
+            <PatientClinicalDataById/>
+            <PatientSymptomDataById/>
+            <PatientExaminationDataById/>
           </Paper>
         </Grid>
       </Grid>

@@ -1,4 +1,5 @@
-// Import necessary libraries
+//Code to geta data by giving patent Id
+
 import React, { useState } from "react";
 import axiosClient from "../axiosClient";
 import {
@@ -11,20 +12,14 @@ import {
   CardContent,
 } from "@mui/material";
 
-// Define the PatientDataById component
-const PatientSymptomDataById = () => {
-  // State to store patient data
+const PatientClinicalDataById = () => {
   const [patient, setPatient] = useState(null);
-  // State to store symptoms data
-  const [symptoms, setSymptoms] = useState([]);
-  // State to manage input value for patient ID
+  const [clinicalData, setClinicalData] = useState(null);
   const [patientId, setPatientId] = useState("");
-  // State to manage loading status
   const [loading, setLoading] = useState(false);
-  // State to manage error messages
   const [error, setError] = useState(null);
 
-  // Function to fetch patient data by ID
+  // Function to fetch patient data and clinical data by ID
   const fetchPatientDataById = async () => {
     if (!patientId) {
       setError("Please enter a valid Patient ID");
@@ -32,38 +27,38 @@ const PatientSymptomDataById = () => {
     }
 
     try {
-      setLoading(true); // Set loading state
-      setError(null); // Clear previous errors
-      setPatient(null); // Clear previous patient data
-      setSymptoms([]); // Clear previous symptoms data
+      setLoading(true);
+      setError(null);
+      setPatient(null);
+      setClinicalData(null);
 
       // Fetch patient data
       const patientResponse = await axiosClient.get(`/patients/${patientId}`);
-      // Fetch symptoms data
-      const symptomsResponse = await axiosClient.get(
-        `/doctors/patients/${patientId}/symptoms`
+      // Fetch clinical data
+      const clinicalDataResponse = await axiosClient.get(
+        `/doctors/patients/${patientId}/clinical-data`
       );
 
-      // Check if the response contains the expected data
+      // Set fetched patient data
       if (patientResponse.data) {
         setPatient(patientResponse.data);
       } else {
         setError("No patient data found.");
       }
 
-      if (symptomsResponse.data) {
-        setSymptoms(symptomsResponse.data); // Assuming symptoms are directly in the response
+      // Set fetched clinical data
+      if (clinicalDataResponse.data) {
+        setClinicalData(clinicalDataResponse.data);
       } else {
-        setError("No symptoms data found.");
+        setError("No clinical data found.");
       }
     } catch (err) {
-      // Set error message if request fails
       setError(
         "Failed to fetch data. Please check the Patient ID and try again."
       );
-      console.error("Error fetching data:", err); // Log error for debugging
+      console.error("Error fetching data:", err);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 
@@ -80,7 +75,6 @@ const PatientSymptomDataById = () => {
         mt: 4,
       }}
     >
-      {/* Input field for patient ID */}
       <TextField
         label="Enter Patient ID"
         variant="outlined"
@@ -91,7 +85,6 @@ const PatientSymptomDataById = () => {
         helperText={error}
       />
 
-      {/* Button to fetch patient data */}
       <Button
         variant="contained"
         color="primary"
@@ -102,10 +95,8 @@ const PatientSymptomDataById = () => {
         Get Patient Data
       </Button>
 
-      {/* Show loading spinner if data is being fetched */}
       {loading && <CircularProgress />}
 
-      {/* Display patient data if available */}
       {patient && (
         <Card sx={{ width: "100%", mt: 2 }}>
           <CardContent>
@@ -138,51 +129,57 @@ const PatientSymptomDataById = () => {
         </Card>
       )}
 
-      {/* Display symptoms if available */}
-      {symptoms.length > 0 && (
+      {clinicalData && (
         <Card sx={{ width: "100%", mt: 2 }}>
           <CardContent>
             <Typography variant="h5" gutterBottom>
-              Symptoms Details
+              Clinical Data
             </Typography>
-            {symptoms.map((symptom, index) => (
-              <Box key={index} mb={2}>
-                <Typography>
-                  <strong>Symptom Code:</strong> {symptom.symptomCode}
-                </Typography>
-                <Typography>
-                  <strong>Bilateral Lower Limb Swelling:</strong>{" "}
-                  {symptom.bilateralLowerLimbSwelling ? "Yes" : "No"}
-                </Typography>
-                <Typography>
-                  <strong>Dyspnoea:</strong> {symptom.dyspnoea ? "Yes" : "No"}
-                </Typography>
-                <Typography>
-                  <strong>Orthopnoea:</strong>{" "}
-                  {symptom.orthopnoea ? "Yes" : "No"}
-                </Typography>
-                <Typography>
-                  <strong>Paroxysmal Nocturnal Dyspnoea:</strong>{" "}
-                  {symptom.paroxysmalNocturnalDyspnoea ? "Yes" : "No"}
-                </Typography>
-                <Typography>
-                  <strong>Fatigue:</strong> {symptom.fatigue ? "Yes" : "No"}
-                </Typography>
-                <Typography>
-                  <strong>Doctor Recommendation:</strong>{" "}
-                  {symptom.doctorRecommendation}
-                </Typography>
-                <Typography>
-                  <strong>Symptom Date:</strong>{" "}
-                  {new Date(symptom.symptomDate).toLocaleDateString()}
-                </Typography>
-              </Box>
-            ))}
+            <Typography>
+              <strong>Clinical Data ID:</strong> {clinicalData.clinicalDataId}
+            </Typography>
+            <Typography>
+              <strong>Diagnosis of Heart Disease:</strong>{" "}
+              {clinicalData.diagnosisOfHeartDisease ? "Yes" : "No"}
+            </Typography>
+            <Typography>
+              <strong>Presence of Anemia:</strong>{" "}
+              {clinicalData.presenceOfAnemia ? "Yes" : "No"}
+            </Typography>
+            <Typography>
+              <strong>Creatinine Phosphokinase:</strong>{" "}
+              {clinicalData.creatininePhosphokinase}
+            </Typography>
+            <Typography>
+              <strong>Diabetes:</strong> {clinicalData.diabetes ? "Yes" : "No"}
+            </Typography>
+            <Typography>
+              <strong>Ejection Fraction:</strong>{" "}
+              {clinicalData.ejectionFraction}%
+            </Typography>
+            <Typography>
+              <strong>Blood Pressure:</strong> {clinicalData.bloodPressure}
+            </Typography>
+            <Typography>
+              <strong>Platelets:</strong> {clinicalData.platelets}
+            </Typography>
+            <Typography>
+              <strong>Serum Creatinine:</strong> {clinicalData.serumCreatinine}
+            </Typography>
+            <Typography>
+              <strong>Serum Sodium:</strong> {clinicalData.serumSodium}
+            </Typography>
+            <Typography>
+              <strong>Smoking:</strong> {clinicalData.smoking ? "Yes" : "No"}
+            </Typography>
+            <Typography>
+              <strong>Follow-Up Period (Days):</strong>{" "}
+              {clinicalData.followUpPeriodDays}
+            </Typography>
           </CardContent>
         </Card>
       )}
 
-      {/* Show message when no data is available and no errors */}
       {!patient && !loading && !error && (
         <Typography>No patient data available.</Typography>
       )}
@@ -190,4 +187,4 @@ const PatientSymptomDataById = () => {
   );
 };
 
-export default PatientSymptomDataById;
+export default PatientClinicalDataById;
