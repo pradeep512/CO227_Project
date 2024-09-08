@@ -4,19 +4,18 @@ import {
   Box,
   TextField,
   Button,
-  Typography,
   CircularProgress,
 } from "@mui/material";
 
-const DeleteSymptoms = () => {
+const DeleteClinicalData = () => {
   const [patientId, setPatientId] = useState("");
-  const [symptomCode, setSymptomCode] = useState("");
+  const [clinicalDataId, setClinicalDataId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleDelete = async () => {
-    if (!patientId || !symptomCode) {
-      setError("Please enter both Patient ID and Symptom Code");
+    if (!patientId || !clinicalDataId) {
+      setError("Please enter both Patient ID and Clinical Data ID");
       return;
     }
 
@@ -24,12 +23,12 @@ const DeleteSymptoms = () => {
       setLoading(true);
       setError(null);
 
-      // Delete symptoms data
-      await axiosClient.delete(`/doctors/patients/${patientId}/symptoms/${symptomCode}`);
-      alert("Symptoms deleted successfully.");
+      // Delete clinical data
+      await axiosClient.delete(`/doctors/patients/${patientId}/clinical-data/${clinicalDataId}`);
+      alert("Clinical data deleted successfully.");
     } catch (err) {
-      setError("Failed to delete symptoms. Please check the data and try again.");
-      console.error("Error deleting symptoms:", err);
+      setError("Failed to delete clinical data. Please check the IDs and try again.");
+      console.error("Error deleting clinical data:", err);
     } finally {
       setLoading(false);
     }
@@ -59,10 +58,10 @@ const DeleteSymptoms = () => {
       />
 
       <TextField
-        label="Enter Symptom Code"
+        label="Enter Clinical Data ID"
         variant="outlined"
-        value={symptomCode}
-        onChange={(e) => setSymptomCode(e.target.value)}
+        value={clinicalDataId}
+        onChange={(e) => setClinicalDataId(e.target.value)}
         fullWidth
         error={Boolean(error)}
         helperText={error}
@@ -75,7 +74,7 @@ const DeleteSymptoms = () => {
         disabled={loading}
         fullWidth
       >
-        Delete Symptoms
+        Delete Clinical Data
       </Button>
 
       {loading && <CircularProgress />}
@@ -83,4 +82,4 @@ const DeleteSymptoms = () => {
   );
 };
 
-export default DeleteSymptoms;
+export default DeleteClinicalData;

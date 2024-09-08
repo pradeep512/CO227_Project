@@ -10,6 +10,8 @@ import PatientExaminationDataById from "../components/GetDoctorExaminationsById"
 import PatientSymptomDataByBothId from "../components/GetSymptomsDataByBothIDs"
 import UpdateSymptoms from "../components/UpdateSymptomsByBothIds"
 import DeleteSymptoms from "../components/DeleteSymptomsByBothIds"
+import DeleteClinicalData from "../components/DeleteClinicalDataByBothIds"
+import DeleteExamination from "../components/DeleteDoctorExaminationsByBothIds";
 
 export default function HomePage() {
   return (
@@ -92,6 +94,8 @@ export default function HomePage() {
             <PatientSymptomDataByBothId/>
             <DeleteSymptoms/>
             <UpdateSymptoms/>
+            <DeleteClinicalData/>
+            <DeleteExamination/>
           </Paper>
         </Grid>
       </Grid>
