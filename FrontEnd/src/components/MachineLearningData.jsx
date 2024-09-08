@@ -430,6 +430,7 @@
 
 // Code from Pathum
 
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import FilledInput from '@mui/material/FilledInput';
@@ -439,6 +440,7 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
+
 
 export default function MachineLearningData() {
     const [formData, setFormData] = useState({
@@ -559,6 +561,7 @@ export default function MachineLearningData() {
                 <div>
                     <h3>Response Data:</h3>
                     <pre>{JSON.stringify(responseData, null, 2)}</pre>
+                    
                 </div>
             )}
         </Box>
