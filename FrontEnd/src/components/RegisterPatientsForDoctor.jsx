@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Button, TextField, Typography, Paper } from "@mui/material";
 import SearchDoctors from "./SearchDoctors";
 import SearchPatients from "./SearchPatients"; // Assuming these components are imported
