@@ -5,6 +5,7 @@ import DoctorPatients from "../components/GetRegisteredPatientsForDoctor";
 import SearchDoctors from "../components/SearchDoctors";
 import SearchPatients from "../components/SearchPatients";
 import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
+import PatientClinicalDataById from "../components/GetClinicalDataById";
 
 const AdminPatientDetails = () => {
   return (
@@ -15,6 +16,7 @@ const AdminPatientDetails = () => {
       <DoctorPatients />
       <SearchPatients />
       <RegisterPatientToDoctor />
+      <PatientClinicalDataById/>
     </div>
   );
 };

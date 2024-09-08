@@ -1,4 +1,3 @@
-// Import necessary libraries
 import React, { useState } from "react";
 import axiosClient from "../axiosClient";
 import {
@@ -11,20 +10,14 @@ import {
   CardContent,
 } from "@mui/material";
 
-// Define the PatientDataById component
 const PatientSymptomDataById = () => {
-  // State to store patient data
   const [patient, setPatient] = useState(null);
-  // State to store symptoms data
   const [symptoms, setSymptoms] = useState([]);
-  // State to manage input value for patient ID
   const [patientId, setPatientId] = useState("");
-  // State to manage loading status
+  const [symptomCode, setSymptomCode] = useState("");
   const [loading, setLoading] = useState(false);
-  // State to manage error messages
   const [error, setError] = useState(null);
 
-  // Function to fetch patient data by ID
   const fetchPatientDataById = async () => {
     if (!patientId) {
       setError("Please enter a valid Patient ID");
@@ -32,38 +25,56 @@ const PatientSymptomDataById = () => {
     }
 
     try {
-      setLoading(true); // Set loading state
-      setError(null); // Clear previous errors
-      setPatient(null); // Clear previous patient data
-      setSymptoms([]); // Clear previous symptoms data
+      setLoading(true);
+      setError(null);
+      setPatient(null);
+      setSymptoms([]);
 
       // Fetch patient data
       const patientResponse = await axiosClient.get(`/patients/${patientId}`);
-      // Fetch symptoms data
-      const symptomsResponse = await axiosClient.get(
-        `/doctors/patients/${patientId}/symptoms`
-      );
-
-      // Check if the response contains the expected data
       if (patientResponse.data) {
         setPatient(patientResponse.data);
       } else {
         setError("No patient data found.");
       }
 
+      // Fetch symptoms by patient ID
+      const symptomsResponse = await axiosClient.get(`/api/doctors/patients/${patientId}/symptoms`);
       if (symptomsResponse.data) {
-        setSymptoms(symptomsResponse.data); // Assuming symptoms are directly in the response
+        setSymptoms(symptomsResponse.data);
       } else {
         setError("No symptoms data found.");
       }
     } catch (err) {
-      // Set error message if request fails
-      setError(
-        "Failed to fetch data. Please check the Patient ID and try again."
-      );
-      console.error("Error fetching data:", err); // Log error for debugging
+      setError("Failed to fetch data. Please check the Patient ID and try again.");
+      console.error("Error fetching data:", err);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
+    }
+  };
+
+  const fetchSymptomsByIdAndCode = async () => {
+    if (!patientId || !symptomCode) {
+      setError("Please enter both Patient ID and Symptom Code");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Fetch symptoms by patient ID and symptom code
+      const symptomsResponse = await axiosClient.get(`/api/doctors/patients/${patientId}/symptoms/${symptomCode}`);
+      if (symptomsResponse.data) {
+        setSymptoms([symptomsResponse.data]); // Setting as an array for consistency
+      } else {
+        setError("No symptoms data found.");
+      }
+    } catch (err) {
+      setError("Failed to fetch data. Please check the Patient ID and Symptom Code and try again.");
+      console.error("Error fetching data:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -80,7 +91,6 @@ const PatientSymptomDataById = () => {
         mt: 4,
       }}
     >
-      {/* Input field for patient ID */}
       <TextField
         label="Enter Patient ID"
         variant="outlined"
@@ -91,7 +101,14 @@ const PatientSymptomDataById = () => {
         helperText={error}
       />
 
-      {/* Button to fetch patient data */}
+      <TextField
+        label="Enter Symptom Code (optional)"
+        variant="outlined"
+        value={symptomCode}
+        onChange={(e) => setSymptomCode(e.target.value)}
+        fullWidth
+      />
+
       <Button
         variant="contained"
         color="primary"
@@ -102,10 +119,18 @@ const PatientSymptomDataById = () => {
         Get Patient Data
       </Button>
 
-      {/* Show loading spinner if data is being fetched */}
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={fetchSymptomsByIdAndCode}
+        disabled={loading || !symptomCode}
+        fullWidth
+      >
+        Get Specific Symptom Data
+      </Button>
+
       {loading && <CircularProgress />}
 
-      {/* Display patient data if available */}
       {patient && (
         <Card sx={{ width: "100%", mt: 2 }}>
           <CardContent>
@@ -138,7 +163,6 @@ const PatientSymptomDataById = () => {
         </Card>
       )}
 
-      {/* Display symptoms if available */}
       {symptoms.length > 0 && (
         <Card sx={{ width: "100%", mt: 2 }}>
           <CardContent>
@@ -182,7 +206,6 @@ const PatientSymptomDataById = () => {
         </Card>
       )}
 
-      {/* Show message when no data is available and no errors */}
       {!patient && !loading && !error && (
         <Typography>No patient data available.</Typography>
       )}

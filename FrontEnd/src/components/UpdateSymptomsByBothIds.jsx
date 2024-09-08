@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axiosClient from "../axiosClient";
 import {
   Box,
@@ -23,31 +23,6 @@ const UpdateSymptoms = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchSymptomData = async (code) => {
-    if (!patientId || !code) return;
-    try {
-      setLoading(true);
-      setError(null);
-
-      // Fetch symptoms data
-      const response = await axiosClient.get(`/api/doctors/patients/${patientId}/symptoms/${code}`);
-      if (response.data) {
-        setSymptomData(response.data);
-      }
-    } catch (err) {
-      setError("Failed to fetch symptoms data. Please check the data and try again.");
-      console.error("Error fetching symptoms data:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (symptomCode) {
-      fetchSymptomData(symptomCode);
-    }
-  }, [symptomCode]);
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setSymptomData((prevData) => ({
@@ -66,7 +41,7 @@ const UpdateSymptoms = () => {
       setLoading(true);
       setError(null);
 
-      // Update symptoms data
+      // Put symptoms data
       const response = await axiosClient.put(`/api/doctors/patients/${patientId}/symptoms/${symptomCode}`, symptomData);
       if (response.data) {
         alert("Symptoms updated successfully.");
