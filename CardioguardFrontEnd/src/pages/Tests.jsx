@@ -16,6 +16,9 @@ import MachineLearningData from "../components/MachineLerningDataForm";
 import NavBar from "../components/NavBar";
 import PatientClinicalDataById from "../components/PatientClinicalDataById";
 import PatientClinicalDataSubmission from "../components/PatientClinicalDataSubmission ";
+import PatientProfileHeader from "../components/PatientHomePageComponents/Editbar";
+import PatientGeneralInfo from "../components/PatientHomePageComponents/GeneralInformation";
+import PatientContactInfo from "../components/PatientHomePageComponents/PatientDetails";
 import PatientSymptomsSubmit from "../components/PatientSymptomsSubmit";
 import PredictionButton from "../components/PredictionButton";
 import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
@@ -71,6 +74,10 @@ export default function Tests() {
       <UpdateDoctor />
       <UpdateSymptoms />
       <UpdateSymptomsByBothIds /> {/*same as the UpdateSymptoms for now */}
+
+      <PatientContactInfo/>
+      <PatientGeneralInfo/>
+      <PatientProfileHeader/>
     </div>
   );
 }
