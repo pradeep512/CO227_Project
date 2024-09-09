@@ -7,6 +7,8 @@ const FetchAllPatients = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1); // For pagination
+  const [patientsPerPage] = useState(10); // Show 10 patients per page
   const navigate = useNavigate();
 
   // Function to fetch all patients
@@ -36,9 +38,31 @@ const FetchAllPatients = () => {
     fetchAllPatients();
   }, []); // Empty dependency array to run the effect only once
 
+  // Get current patients for pagination
+  const indexOfLastPatient = currentPage * patientsPerPage;
+  const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
+  const currentPatients = patients.slice(
+    indexOfFirstPatient,
+    indexOfLastPatient
+  );
+
   // Function to handle row click
   const handleRowClick = (patientId) => {
     navigate(`/findbypatientId?patientId=${patientId}`);
+  };
+
+  // Handle next page
+  const nextPage = () => {
+    if (currentPage * patientsPerPage < patients.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Handle previous page
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   return (
@@ -61,7 +85,7 @@ const FetchAllPatients = () => {
       {error && <p className="text-red-600 text-center mb-4">{error}</p>}
 
       {/* Display patients in a table if available */}
-      {patients.length > 0 && (
+      {currentPatients.length > 0 && (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border">
             <thead>
@@ -75,7 +99,7 @@ const FetchAllPatients = () => {
               </tr>
             </thead>
             <tbody>
-              {patients.map((patient) => (
+              {currentPatients.map((patient) => (
                 <tr
                   key={patient.patientId}
                   onClick={() => handleRowClick(patient.patientId)}
@@ -105,6 +129,35 @@ const FetchAllPatients = () => {
           </table>
         </div>
       )}
+
+      {/* Pagination controls */}
+      <div className="flex justify-between items-center mt-4">
+        <button
+          onClick={prevPage}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded ${
+            currentPage === 1 ? "cursor-not-allowed opacity-50" : ""
+          }`}
+        >
+          Previous
+        </button>
+
+        <span>
+          Page {currentPage} of {Math.ceil(patients.length / patientsPerPage)}
+        </span>
+
+        <button
+          onClick={nextPage}
+          disabled={currentPage * patientsPerPage >= patients.length}
+          className={`px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 rounded ${
+            currentPage * patientsPerPage >= patients.length
+              ? "cursor-not-allowed opacity-50"
+              : ""
+          }`}
+        >
+          Next
+        </button>
+      </div>
 
       {/* Show message when no patients are available */}
       {patients.length === 0 && !loading && !error && (
