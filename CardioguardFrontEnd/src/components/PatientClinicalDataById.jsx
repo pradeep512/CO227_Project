@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axiosClient from "../../axios-client"; // Updated path for axiosClient
+import axiosClient from "../../axios-client"; // Ensure the correct path for axiosClient
 
 const PatientClinicalDataById = () => {
   const [patient, setPatient] = useState(null);
@@ -8,7 +8,6 @@ const PatientClinicalDataById = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Function to fetch patient data and clinical data by ID
   const fetchPatientDataById = async () => {
     if (!patientId) {
       setError("Please enter a valid Patient ID");
@@ -28,14 +27,12 @@ const PatientClinicalDataById = () => {
         `/doctors/patients/${patientId}/clinical-data`
       );
 
-      // Set fetched patient data
       if (patientResponse.data) {
         setPatient(patientResponse.data);
       } else {
         setError("No patient data found.");
       }
 
-      // Set fetched clinical data
       if (clinicalDataResponse.data) {
         setClinicalData(clinicalDataResponse.data);
       } else {
@@ -54,9 +51,11 @@ const PatientClinicalDataById = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 to-orange-300">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center mb-6">Patient Data</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">
+          Patient Clinical Data
+        </h1>
 
-        {/* Input for Patient ID */}
+        {/* Input field for patient ID */}
         <input
           type="text"
           placeholder="Enter Patient ID"
@@ -66,7 +65,7 @@ const PatientClinicalDataById = () => {
         />
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
-        {/* Button to fetch data */}
+        {/* Button to fetch patient data */}
         <button
           onClick={fetchPatientDataById}
           disabled={loading}
@@ -98,7 +97,7 @@ const PatientClinicalDataById = () => {
           )}
         </button>
 
-        {/* Patient Details */}
+        {/* Display patient data */}
         {patient && (
           <div className="bg-gray-50 rounded-md p-4 mb-4">
             <h2 className="text-lg font-bold mb-2">Patient Details</h2>
@@ -127,12 +126,12 @@ const PatientClinicalDataById = () => {
           </div>
         )}
 
-        {/* Clinical Data */}
+        {/* Display clinical data */}
         {clinicalData && (
           <div className="bg-gray-50 rounded-md p-4">
-            <h2 className="text-lg font-bold mb-2">Clinical Data</h2>
+            <h2 className="text-lg font-bold mb-2">Clinical Data Details</h2>
             <p>
-              <strong>Clinical Data ID:</strong> {clinicalData.clinicalDataId}
+              <strong>Clinical Data ID:</strong> {clinicalData.clinicalDataId || "N/A"}
             </p>
             <p>
               <strong>Diagnosis of Heart Disease:</strong>{" "}
@@ -144,42 +143,45 @@ const PatientClinicalDataById = () => {
             </p>
             <p>
               <strong>Creatinine Phosphokinase:</strong>{" "}
-              {clinicalData.creatininePhosphokinase}
+              {clinicalData.creatininePhosphokinase || "N/A"}
             </p>
             <p>
-              <strong>Diabetes:</strong> {clinicalData.diabetes ? "Yes" : "No"}
+              <strong>Diabetes:</strong>{" "}
+              {clinicalData.diabetes ? "Yes" : "No"}
             </p>
             <p>
               <strong>Ejection Fraction:</strong>{" "}
-              {clinicalData.ejectionFraction}%
+              {clinicalData.ejectionFraction
+                ? `${clinicalData.ejectionFraction}%`
+                : "N/A"}
             </p>
             <p>
-              <strong>Blood Pressure:</strong> {clinicalData.bloodPressure}
+              <strong>Blood Pressure:</strong>{" "}
+              {clinicalData.bloodPressure || "N/A"}
             </p>
             <p>
-              <strong>Platelets:</strong> {clinicalData.platelets}
+              <strong>Platelets:</strong> {clinicalData.platelets || "N/A"}
             </p>
             <p>
-              <strong>Serum Creatinine:</strong> {clinicalData.serumCreatinine}
+              <strong>Serum Creatinine:</strong>{" "}
+              {clinicalData.serumCreatinine || "N/A"}
             </p>
             <p>
-              <strong>Serum Sodium:</strong> {clinicalData.serumSodium}
+              <strong>Serum Sodium:</strong> {clinicalData.serumSodium || "N/A"}
             </p>
             <p>
               <strong>Smoking:</strong> {clinicalData.smoking ? "Yes" : "No"}
             </p>
             <p>
               <strong>Follow-Up Period (Days):</strong>{" "}
-              {clinicalData.followUpPeriodDays}
+              {clinicalData.followUpPeriodDays || "N/A"}
             </p>
           </div>
         )}
 
-        {/* No patient data */}
+        {/* No data message */}
         {!patient && !loading && !error && (
-          <p className="text-gray-600 text-center">
-            No patient data available.
-          </p>
+          <p className="text-gray-600 text-center">No patient data available.</p>
         )}
       </div>
     </div>
