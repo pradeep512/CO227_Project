@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AboutPage from "../pages/AboutPage";
 import FetchAllDoctors from "../components/AllDoctors";
 import HomePage from "../pages/HomePage";
-// import Tests from "../pages/Tests";
+import Tests from "../pages/Tests";
 import ContactUsPage from "../pages/ContactUsPage";
 import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/PatientRegisterPage";
@@ -37,7 +37,7 @@ const AppRoutes = createBrowserRouter([
   { path: "/register-user", element: <RegisterUser /> },
   // { path: "/admin-dashboard", element: <AdminDashboard /> },
 
-  // { path: "/tests", element: <Tests /> },
+  { path: "/tests2", element: <Tests /> },
 ]);
 
 export default AppRoutes;

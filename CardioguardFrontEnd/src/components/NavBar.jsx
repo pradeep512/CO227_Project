@@ -81,7 +81,7 @@ export default function NavBar() {
               </li>
               <li className="p-4">
                 <a
-                  href="/tests"
+                  href="/tests2"
                   className="text-white"
                   onClick={handleMenuClose}
                 >
@@ -106,7 +106,7 @@ export default function NavBar() {
           <a href="/services" className="text-white hover:underline">
             Services
           </a>
-          <a href="/tests" className="text-white hover:underline">
+          <a href="/tests2" className="text-white hover:underline">
             Tests
           </a>
         </div>
