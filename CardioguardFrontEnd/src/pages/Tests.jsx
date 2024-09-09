@@ -1,3 +1,5 @@
+// import Sidebar from "../components/AdminComponents/SideBar";
+// import TopBar from "../components/AdminComponents/TopBar";
 import FetchAllDoctors from "../components/AllDoctors";
 import FetchAllPatients from "../components/AllPatients";
 import DeleteDoctor from "../components/DeleteDoctor";
@@ -23,10 +25,27 @@ import SendDeleteButton from "../components/SendDeleteButton";
 import UpdateDoctor from "../components/UpdateDoctor ";
 import UpdateSymptoms from "../components/UpdateSymptoms";
 import UpdateSymptomsByBothIds from "../components/UpdateSymptomsByBothIds";
+// import AdminHome from "./Admin/AdminPage";
 
 export default function Tests() {
   return (
     <div>
+      {/* <AdminHome /> */}
+      {/* <TopBar />
+      <Sidebar /> */}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <NavBar />
       <MachineLearningData />
       <DeleteDoctor />
