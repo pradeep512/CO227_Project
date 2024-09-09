@@ -109,7 +109,7 @@ def testing_prediction(input_data):
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
     prediction = model.predict(input_data_reshaped)
     
-    result = 'The Person has the possibility to have a Heart Disease' if prediction[0] == 1 else 'The Person does not show any risk of a Heart Disease'
+    result = 'Higher chance for a Heart Disease' if prediction[0] == 1 else 'Minimum signs of a Heart Disease'
     dataset = {
         'Result': result,
         'Accuracy on Training data': f'{round(training_data_accuracy * 100, 2)}%',
