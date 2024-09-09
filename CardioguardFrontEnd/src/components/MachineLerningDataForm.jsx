@@ -485,7 +485,7 @@ export default function MachineLearningData() {
           </div>
         </form>
 
-        {/* Loading Animation */}
+        
         {loading && !animationCompleted && (
           <div className="loader-container mt-6">
             <div className="progress-bar">
@@ -510,7 +510,7 @@ export default function MachineLearningData() {
               .progress {
                 width: 0;
                 height: 100%;
-                background: linear-gradient(90deg, #8e2de2, #ff5c35);
+                background: linear-gradient(90deg, #ed56f5, #e8bd2e);
                 animation: fill 1.5s linear;
               }
               @keyframes fill {
