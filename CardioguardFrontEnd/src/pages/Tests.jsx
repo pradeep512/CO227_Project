@@ -30,22 +30,6 @@ import UpdateSymptomsByBothIds from "../components/UpdateSymptomsByBothIds";
 export default function Tests() {
   return (
     <div>
-      {/* <AdminHome /> */}
-      {/* <TopBar />
-      <Sidebar /> */}
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <NavBar />
       <MachineLearningData />
       <DeleteDoctor />
