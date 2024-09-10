@@ -204,7 +204,7 @@
 //     </div>
 //   );
 // }
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import NavBar from "../components/NavBar";
 import { useState } from "react";
 
@@ -218,9 +218,31 @@ export default function ContactUsPage() {
     const email = data.get("email");
     const message = data.get("message");
 
+    // Creating JSON object from form data
+    const formData = {
+      name: name,
+      email: email,
+      message: message,
+    };
+
     if (name && email && message) {
-      setFormStatus("Message sent successfully!");
-      console.log({ name, email, message });
+      // Sending form data as JSON to a specified URL
+      fetch("https://example.com/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setFormStatus("Message sent successfully!");
+          console.log(data); // For debug purposes
+        })
+        .catch((error) => {
+          setFormStatus("Failed to send message.");
+          console.error("Error:", error);
+        });
     } else {
       setFormStatus("Please fill out all fields.");
     }
@@ -272,26 +294,50 @@ export default function ContactUsPage() {
               </form>
             </div>
 
-            {/* Contact Information with 3D Effect */}
+            {/* Contact Information with 3D and Table Effect */}
             <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-2xl transform transition duration-500 hover:-translate-y-2 hover:shadow-3xl">
               <h3 className="text-gray-800 text-3xl font-bold mb-6">
                 Contact Information
               </h3>
-              <p className="text-gray-800 mb-2">
-                Email:{" "}
-                <a
-                  href="mailto:info@yourwebsite.com"
-                  className="text-pink-500 hover:underline"
-                >
-                  info@yourwebsite.com
-                </a>
-              </p>
-              <p className="text-gray-800 mb-2">Phone: (+94) 71-075-8542</p>
-              <p className="text-gray-800 mb-6">
-                Address: University of Peradeniya, Prof. E. O. E. Pereira Mawatha, Kandy
-              </p>
 
-              <h4 className="text-gray-800 text-xl font-semibold mb-4">
+            <div className="grid grid-cols-[min-content_auto] gap-4"> 
+              <div className="bg-blue-200 p-4 rounded-l-lg w-[150px]">
+                <p className="text-gray-800">Email</p>
+              </div>
+              <div className="bg-white p-4 rounded-r-lg">
+                <a
+                  href="mailto:cardioguarduop@gmail.com"
+                  className="text-blue-500 font-mono"
+                  style={{ width: "220px", display: "block" }}
+                >
+                  CardioGuarduop@gmail.com
+                </a>
+              </div>
+
+              <div className="bg-blue-200 p-4 rounded-l-lg w-[150px]">
+                <p className="text-gray-800">Phone</p>
+              </div>
+              <div className="bg-white p-4 rounded-r-lg">
+                <p
+                  className="text-blue-500 font-mono"
+                  style={{ width: "220px", display: "block" }}
+                >
+                  (+94) 71-075-8542
+                </p>
+              </div>
+
+              <div className="bg-blue-200 p-4 rounded-l-lg w-[150px]">
+                <p className="text-gray-800">Address</p>
+              </div>
+              <div className="bg-white p-4 rounded-r-lg">
+                <p className="text-gray-800">
+                  University of Peradeniya, Prof. E. O. E. Pereira Mawatha, Kandy
+                </p>
+              </div>
+            </div>
+
+
+              <h4 className="text-gray-800 text-xl font-semibold mb-4 mt-8">
                 Office Hours
               </h4>
               <p className="text-gray-800">Monday - Friday: 9 AM - 6 PM</p>
@@ -302,13 +348,13 @@ export default function ContactUsPage() {
               </h4>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-800 hover:text-pink-500">
-                  Facebook
+                  <i className="fab fa-facebook-f text-2xl"></i>
                 </a>
                 <a href="#" className="text-gray-800 hover:text-pink-500">
-                  X
+                  <i className="fab fa-twitter text-2xl"></i>
                 </a>
                 <a href="#" className="text-gray-800 hover:text-pink-500">
-                  Instagram
+                  <i className="fab fa-instagram text-2xl"></i>
                 </a>
               </div>
             </div>
@@ -339,15 +385,15 @@ export default function ContactUsPage() {
                   Terms of Service
                 </a>
               </div>
-              <div>
-                <a href="https://www.facebook.com" className="mr-4 hover:text-pink-300">
-                  Facebook
+              <div className="flex justify-center space-x-4">
+                <a href="https://www.facebook.com" className="hover:text-pink-300">
+                  <i className="fab fa-facebook-f text-3xl"></i>
                 </a>
-                <a href="https://www.twitter.com" className="mr-4 hover:text-pink-300">
-                  X
+                <a href="https://www.twitter.com" className="hover:text-pink-300">
+                  <i className="fab fa-twitter text-3xl"></i>
                 </a>
                 <a href="https://www.instagram.com" className="hover:text-pink-300">
-                  Instagram
+                  <i className="fab fa-instagram text-3xl"></i>
                 </a>
               </div>
             </div>
