@@ -37,42 +37,40 @@ const PatientContactInfo = () => {
   }, [patientId]); // Fetch data when patientId is loaded (which is hardcoded here)
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-sm">
-        <h2 className="text-lg font-bold mb-4">Patient Info</h2>
-        {patient ? (
-          <div>
-            {/* First Name */}
-            <div className="mb-4">
-              <p className="text-sm text-gray-500">First Name</p>
-              <p className="text-md font-medium">{patient.firstName || "N/A"}</p>
+          <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-sm">
+          <h2 className="text-lg font-bold mb-4">Patient Info</h2>
+          {patient ? (
+            <div>
+              {/* First Name */}
+              <div className="mb-4">
+                <p className="text-sm text-gray-500">First Name</p>
+                <p className="text-md font-medium">{patient.firstName || "N/A"}</p>
+              </div>
+  
+              {/* Last Name */}
+              <div className="mb-4">
+                <p className="text-sm text-gray-500">Last Name</p>
+                <p className="text-md font-medium">{patient.lastName || "N/A"}</p>
+              </div>
+  
+              {/* NIC */}
+              <div className="mb-4">
+                <p className="text-sm text-gray-500">NIC</p>
+                <p className="text-md font-medium">{patient.nic || "N/A"}</p>
+              </div>
+  
+              {/* Email */}
+              <div className="mb-4">
+                <p className="text-sm text-gray-500">Email</p>
+                <p className="text-md font-medium">{patient.email || "N/A"}</p>
+              </div>
             </div>
-
-            {/* Last Name */}
-            <div className="mb-4">
-              <p className="text-sm text-gray-500">Last Name</p>
-              <p className="text-md font-medium">{patient.lastName || "N/A"}</p>
+          ) : (
+            <div className="text-center text-gray-500">
+              {error || "Loading..."}
             </div>
-
-            {/* NIC */}
-            <div className="mb-4">
-              <p className="text-sm text-gray-500">NIC</p>
-              <p className="text-md font-medium">{patient.nic || "N/A"}</p>
-            </div>
-
-            {/* Email */}
-            <div className="mb-4">
-              <p className="text-sm text-gray-500">Email</p>
-              <p className="text-md font-medium">{patient.email || "N/A"}</p>
-            </div>
-          </div>
-        ) : (
-          <div className="text-center text-gray-500">
-            {error || "Loading..."}
-          </div>
-        )}
-      </div>
-    </div>
+          )}
+        </div>
   );
 };
 
