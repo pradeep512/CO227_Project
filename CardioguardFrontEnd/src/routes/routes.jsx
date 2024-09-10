@@ -11,6 +11,7 @@ import RegisterUser from "../pages/Register-patient-auth";
 import AdminDashboard from "../components/AdminComponents/AdminDashboard";
 import AdminPatients from "../components/AdminComponents/AdminPatients";
 import AdminMainLayout from "../components/layouts/AdminMainLayout";
+import ServicesPage from "../pages/ServicePgae";
 
 const AppRoutes = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const AppRoutes = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   { path: "/register-patient", element: <RegisterPage /> },
   { path: "/register-user", element: <RegisterUser /> },
+  { path: "/services", element: <ServicesPage/>},
   // { path: "/admin-dashboard", element: <AdminDashboard /> },
 
   { path: "/tests2", element: <Tests /> },
