@@ -11,6 +11,9 @@ import RegisterUser from "../pages/Register-patient-auth";
 import AdminDashboard from "../components/AdminComponents/AdminDashboard";
 import AdminPatients from "../components/AdminComponents/AdminPatients";
 import AdminMainLayout from "../components/layouts/AdminMainLayout";
+import PatientDashboard from "../components/PatientHomePageComponents/PatientDashboard";
+import PatientMainLayout from "../components/layouts/PatientMainLayout";
+import PatientMedicalInfo from "../components/PatientHomePageComponents/PatientMedicalInfo";
 
 const AppRoutes = createBrowserRouter([
   {
@@ -28,6 +31,22 @@ const AppRoutes = createBrowserRouter([
       // Add more routes here, such as doctors, prediction, etc.
     ],
   },
+
+  {
+    path: "/patient",
+    element: <PatientMainLayout />, // This layout contains the sidebar and topbar
+    children: [
+      {
+        path: "", // Dashboard page
+        element: <PatientDashboard />,
+      },
+      {
+        path: "patients", // Patients page
+        element: <PatientMedicalInfo />,
+      },
+      // Add more routes here, such as doctors, prediction, etc.
+    ],
+  },
   { path: "/", element: <HomePage /> },
   { path: "/about", element: <AboutPage /> },
   { path: "/doctors", element: <FetchAllDoctors /> },
@@ -35,8 +54,9 @@ const AppRoutes = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   { path: "/register-patient", element: <RegisterPage /> },
   { path: "/register-user", element: <RegisterUser /> },
-  // { path: "/admin-dashboard", element: <AdminDashboard /> },
-
+  { path: "/admin-dashboard", element: <AdminDashboard /> },
+  { path: "/patient-dashboard", element: <PatientDashboard /> },
+ 
   { path: "/tests2", element: <Tests /> },
 ]);
 
