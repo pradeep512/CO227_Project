@@ -3,6 +3,7 @@ import Sidebar from "../../components/AdminComponents/SideBar";
 import TopBar from "../../components/AdminComponents/TopBar";
 import AdminDashboard from "../../components/AdminComponents/AdminDashboard";
 import AdminPatients from "../../components/AdminComponents/AdminPatients";
+import AdminDoctors from "../components/AdminComponents/AdminDoctors";
 
 const AdminHome = () => {
   return (
@@ -27,7 +28,7 @@ const AdminHome = () => {
             <Route path="/patients" element={<AdminPatients />} />
 
             {/* You can add more routes for other views, like Doctors */}
-            <Route path="/doctors" element={<h1>Doctors Page</h1>} />
+            <Route path="/doctors" element={<AdminDoctors />} />
           </Routes>
         </div>
       </div>
