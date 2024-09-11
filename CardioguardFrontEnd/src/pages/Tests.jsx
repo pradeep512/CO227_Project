@@ -66,7 +66,8 @@ export default function Tests() {
       <PatientGeneralInfo/>
       <PatientProfileHeader/>  */}
 
-      <PatientHome/>
+      {/* <AdminHome /> */}
+      {/* <PatientHome/> */}
     </div>
   );
 }
