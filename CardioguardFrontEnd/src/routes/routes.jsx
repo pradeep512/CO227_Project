@@ -14,6 +14,7 @@ import AdminMainLayout from "../components/layouts/AdminMainLayout";
 import PatientDashboard from "../components/PatientHomePageComponents/PatientDashboard";
 import PatientMainLayout from "../components/layouts/PatientMainLayout";
 import PatientMedicalInfo from "../components/PatientHomePageComponents/PatientMedicalInfo";
+import AdminDoctors from "../components/AdminComponents/AdminDoctors";
 
 const AppRoutes = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const AppRoutes = createBrowserRouter([
       {
         path: "patients", // Patients page
         element: <AdminPatients />,
+      },
+      {
+        path: "doctors", // Patients page
+        element: <AdminDoctors />,
       },
       // Add more routes here, such as doctors, prediction, etc.
     ],
@@ -55,6 +60,7 @@ const AppRoutes = createBrowserRouter([
   { path: "/register-patient", element: <RegisterPage /> },
   { path: "/register-user", element: <RegisterUser /> },
   { path: "/admin-dashboard", element: <AdminDashboard /> },
+  { path: "/patient-dashboard", element: <PatientDashboard /> },
   { path: "/patient-dashboard", element: <PatientDashboard /> },
  
   { path: "/tests2", element: <Tests /> },
