@@ -26,7 +26,7 @@ const AppRoutes = createBrowserRouter([
         element: <AdminDashboard />,
       },
       {
-        path: "patients", // Patients page
+        path:"patients/:patientId", // Patients page
         element: <AdminPatients />,
       },
       {

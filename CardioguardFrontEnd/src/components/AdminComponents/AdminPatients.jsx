@@ -1,39 +1,66 @@
-// Patients.jsx
+// AdminPatients.jsx
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axiosClient from "../../../axios-client";
+
 const AdminPatients = () => {
+  const { patientId } = useParams(); // Get patientId from URL
+  const [patient, setPatient] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPatientData = async () => {
+      try {
+        const response = await axiosClient.get(`admin/patient/${patientId}`);
+        setPatient(response.data);
+      } catch (err) {
+        setError("Please select a patient from dashboard!");
+        console.error("Error fetching patient data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPatientData();
+  }, [patientId]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p className="text-red-600">{error}</p>;
+
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Patients</h1>
-
-      {/* Example of Patient Info (You can map through your list of patients) */}
-      <div className="bg-white p-6 shadow-md rounded-lg">
-        <div className="flex items-center mb-4">
-          <img
-            src="https://via.placeholder.com/60"
-            alt="Patient"
-            className="rounded-full w-16 h-16"
-          />
-          <div className="ml-4">
-            <p className="font-semibold">Caren G. Simpson</p>
-            <p>Patient ID: 301</p>
+      <h1 className="text-3xl font-bold mb-6">Patient Details</h1>
+      {patient && (
+        <div className="bg-white p-6 shadow-md rounded-lg">
+          <div className="flex items-center mb-4">
+            <img
+              src="https://via.placeholder.com/60"
+              alt="Patient"
+              className="rounded-full w-16 h-16"
+            />
+            <div className="ml-4">
+              <p className="font-semibold">{patient.firstName} {patient.lastName}</p>
+              <p>Patient ID: {patient.patientId}</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="bg-gray-100 p-4 rounded-lg">
+              <h4 className="font-bold">Personal Info</h4>
+              <p>Email: {patient.email}</p>
+              <p>D.O.B: {patient.dateOfBirth}</p>
+              <p>Gender: {patient.gender}</p>
+              <p>N.I.C: {patient.nic}</p>
+            </div>
+            <div className="bg-gray-100 p-4 rounded-lg">
+              <h4 className="font-bold">Medical Info</h4>
+              <p>Height: {patient.height}</p>
+              <p>Weight: {patient.weight}</p>
+              <p>Blood Pressure: {patient.bloodPressure}</p>
+            </div>
           </div>
         </div>
-
-        {/* Patient Information */}
-        <div className="grid grid-cols-2 gap-6">
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <h4 className="font-bold">Contact Info</h4>
-            <p>Phone: +1 555-123-4567</p>
-            <p>Email: caren.simpson@example.com</p>
-            <p>Address: 123 Maple Street</p>
-          </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <h4 className="font-bold">Medical Info</h4>
-            <p>Height: 5 ft 1.5 in</p>
-            <p>Weight: 140 lbs</p>
-            <p>Blood Pressure: 120/80 mmHg</p>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
