@@ -141,6 +141,7 @@ import { useEffect, useState } from "react";
 import axiosClient from "../../../axios-client"; // Updated path for axiosClient
 import PatientOverviewChart from "../AdminComponents/PatientOverviewChart";
 import RevenueChart from "../AdminComponents/RevenueChart";
+import FetchAllPatients from "../AdminComponents/FetchAllPatients"
 
 const AdminDashboard = () => {
   const [data, setData] = useState({
@@ -222,6 +223,9 @@ const AdminDashboard = () => {
         <div className="bg-white p-6 shadow-lg rounded">
           <RevenueChart />
         </div>
+      </div>
+      <div>
+       <FetchAllPatients/>
       </div>
     </div>
   );
