@@ -7,6 +7,6 @@ import AppRoutes from "./routes/routes.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={AppRoutes} />
+    <RouterProvider router={AppRoutes}></RouterProvider>
   </React.StrictMode>
 );

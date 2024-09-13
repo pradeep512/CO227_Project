@@ -129,10 +129,11 @@ const AppRoutes = createBrowserRouter([
   },
   
   { path: "/", element: <HomePage /> },
+  { path: "/login", element: <LoginPage /> },
+
   { path: "/about", element: <AboutPage /> },
   { path: "/doctors", element: <FetchAllDoctors /> },
   { path: "/contact", element: <ContactUsPage /> },
-  { path: "/login", element: <LoginPage /> },
   { path: "/register-patient", element: <RegisterPage /> },
   { path: "/register-user", element: <RegisterUser /> },
   { path: "/admin-dashboard", element: <AdminDashboard /> }, // Admin dashboard standalone route

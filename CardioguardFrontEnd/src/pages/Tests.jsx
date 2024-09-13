@@ -34,7 +34,6 @@ import PatientHome from "./Patient/PatientHomePage";
 export default function Tests() {
   return (
     <div>
-      <MachineLearningData />
       {/* <NavBar />
       <MachineLearningData />
       <DeleteDoctor />

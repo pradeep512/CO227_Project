@@ -200,7 +200,10 @@ const FetchAllPatients = () => {
   // Get current patients for pagination
   const indexOfLastPatient = currentPage * patientsPerPage;
   const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
-  const currentPatients = patients.slice(indexOfFirstPatient, indexOfLastPatient);
+  const currentPatients = patients.slice(
+    indexOfFirstPatient,
+    indexOfLastPatient
+  );
 
   // Function to handle row click
   const handleRowClick = (patientId) => {
