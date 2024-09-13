@@ -34,7 +34,6 @@ import PatientHome from "./Patient/PatientHomePage";
 export default function Tests() {
   return (
     <div>
-      <MachineLearningData />
       {/* <NavBar />
       <MachineLearningData />
       <DeleteDoctor />
@@ -69,6 +68,18 @@ export default function Tests() {
 
       {/* <AdminHome /> */}
       {/* <PatientHome/> */}
+      <DeleteDoctor />
+      <FetchAllDoctors />
+      <DeletePatient />
+      <DeleteSymptoms />
+      <DoctorExaminationDataSubmission />
+      <FetchAllPatients />
+      <PatientClinicalDataById />
+      <DoctorDataById />
+      <PatientExaminationDataById />
+      <PatientDataById />
+      <PatientSymptomDataById />
+      <DoctorPatients />
     </div>
   );
 }

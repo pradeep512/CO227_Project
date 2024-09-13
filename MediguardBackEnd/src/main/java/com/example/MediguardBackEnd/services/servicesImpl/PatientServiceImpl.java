@@ -27,15 +27,17 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
+    private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
     private final PatientClinicalDataRepository clinicalDataRepository;
     private final PatientSymptomsRepository symptomsRepository;
     private final DoctorExaminationRepository examinationRepository;
 
     @Autowired
-    public PatientServiceImpl(PatientRepository patientRepository, DoctorRepository doctorRepository, ObjectMapper objectMapper, PatientClinicalDataRepository clinicalDataRepository, PatientSymptomsRepository symptomsRepository, DoctorExaminationRepository examinationRepository) {
+    public PatientServiceImpl(PatientRepository patientRepository, DoctorRepository doctorRepository, UserRepository userRepository, ObjectMapper objectMapper, PatientClinicalDataRepository clinicalDataRepository, PatientSymptomsRepository symptomsRepository, DoctorExaminationRepository examinationRepository) {
         this.patientRepository = patientRepository;
         this.doctorRepository = doctorRepository;
+        this.userRepository = userRepository;
         this.objectMapper = objectMapper;
         this.clinicalDataRepository = clinicalDataRepository;
         this.symptomsRepository = symptomsRepository;
@@ -134,9 +136,8 @@ public class PatientServiceImpl implements PatientService {
     @Transactional
     public void deletePatient(Long patientId) {
         try {
-            if (!patientRepository.existsById(patientId)) {
-                throw new ResourceNotFoundException("Patient is not exist with given id : " + patientId);
-            }
+            Patient patient = patientRepository.findById(patientId)
+                    .orElseThrow(()-> new ResourceNotFoundException("Patient is not exist with given id : " + patientId));
 
             // Add null check for clinicalDataRepository
             if (clinicalDataRepository != null) {
@@ -154,6 +155,9 @@ public class PatientServiceImpl implements PatientService {
             } else {
                 throw new ServiceException("clinicalDataRepository is null. Cannot delete clinical data.");
             }
+
+            userRepository.deleteById(patient.getUsers().getId());
+
         } catch (ResourceNotFoundException e) {
             throw e;
         } catch (Exception e) {

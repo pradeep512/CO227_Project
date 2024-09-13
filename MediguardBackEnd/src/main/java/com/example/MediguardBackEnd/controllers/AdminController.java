@@ -107,6 +107,13 @@ public class AdminController {
         return ResponseEntity.ok(patientDTO);
     }
 
+    //Make an appointment
+    @PutMapping("/registerTo/{doctorId}/{patientId}/register")
+    public ResponseEntity<PatientDTO> RegisterPatientsToDoctor(@PathVariable Long patientId,@PathVariable Long doctorId){
+        PatientDTO patientDTO = patientService.putVisitedDoctors(patientId,doctorId);
+        return ResponseEntity.ok(patientDTO);
+    }
+
     //Get the patient by ID for the doctor
     @GetMapping("/patient/{patientId}/{doctorId}/")
     public ResponseEntity<PatientDTO> getPatientById(@PathVariable("patientId") Long patientId,@PathVariable("doctorId") Long doctorId){
