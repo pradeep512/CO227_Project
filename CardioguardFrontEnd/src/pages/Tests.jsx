@@ -68,6 +68,18 @@ export default function Tests() {
 
       {/* <AdminHome /> */}
       {/* <PatientHome/> */}
+      <DeleteDoctor />
+      <FetchAllDoctors />
+      <DeletePatient />
+      <DeleteSymptoms />
+      <DoctorExaminationDataSubmission />
+      <FetchAllPatients />
+      <PatientClinicalDataById />
+      <DoctorDataById />
+      <PatientExaminationDataById />
+      <PatientDataById />
+      <PatientSymptomDataById />
+      <DoctorPatients />
     </div>
   );
 }
