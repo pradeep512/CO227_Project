@@ -59,7 +59,6 @@
 
 // export default AdminDashboard;
 
-
 // import { useEffect, useState } from "react";
 // import axiosClient from "../../../axios-client"; // Updated path for axiosClient
 // import PatientOverviewChart from "../AdminComponents/PatientOverviewChart";
@@ -136,12 +135,13 @@
 
 // export default AdminDashboard;
 
-
 import { useEffect, useState } from "react";
 import axiosClient from "../../../axios-client"; // Updated path for axiosClient
 import PatientOverviewChart from "../AdminComponents/PatientOverviewChart";
 import RevenueChart from "../AdminComponents/RevenueChart";
-import FetchAllPatients from "../AdminComponents/FetchAllPatients"
+import FetchAllPatients from "../AdminComponents/FetchAllPatients";
+import SearchDoctors from "../SearchDoctors";
+import SearchPatients from "../SearchPatients";
 
 const AdminDashboard = () => {
   const [data, setData] = useState({
@@ -225,7 +225,11 @@ const AdminDashboard = () => {
         </div>
       </div>
       <div>
-       <FetchAllPatients/>
+        <FetchAllPatients />
+      </div>
+      <div className="flex item-center justify-center space-x-4">
+        <SearchPatients />
+        <SearchDoctors />
       </div>
     </div>
   );
