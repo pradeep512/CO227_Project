@@ -16,9 +16,9 @@ import MachineLearningData from "../components/MachineLerningDataForm";
 import NavBar from "../components/NavBar";
 import PatientClinicalDataById from "../components/PatientClinicalDataById";
 import PatientClinicalDataSubmission from "../components/PatientClinicalDataSubmission ";
-import PatientProfileHeader from "../components/PatientHomePageComponents/Editbar";
-import PatientGeneralInfo from "../components/PatientHomePageComponents/GeneralInformation";
-import PatientContactInfo from "../components/PatientHomePageComponents/PatientDetails";
+import PatientProfileHeader from "../components/PatientHomePageComponents/PatientProfileHeader";
+import PatientGeneralInfo from "../components/PatientHomePageComponents/PatientGeneralInfo";
+import PatientContactInfo from "../components/PatientHomePageComponents/PatientContactInfo";
 import PatientSymptomsSubmit from "../components/PatientSymptomsSubmit";
 import PredictionButton from "../components/PredictionButton";
 import RegisterPatientToDoctor from "../components/RegisterPatientsForDoctor";
@@ -28,12 +28,13 @@ import SendDeleteButton from "../components/SendDeleteButton";
 import UpdateDoctor from "../components/UpdateDoctor ";
 import UpdateSymptoms from "../components/UpdateSymptoms";
 import UpdateSymptomsByBothIds from "../components/UpdateSymptomsByBothIds";
+import PatientHome from "./Patient/PatientHomePage";
 // import AdminHome from "./Admin/AdminPage";
 
 export default function Tests() {
   return (
     <div>
-      <NavBar />
+      {/* <NavBar />
       <MachineLearningData />
       <DeleteDoctor />
       <FetchAllDoctors />
@@ -48,20 +49,37 @@ export default function Tests() {
       <PatientSymptomDataById />
       <DoctorPatients />
       <PatientSymptomDataByBothId /> {/*  Something wrong here */}
-      <PatientClinicalDataSubmission />
+      {/* <PatientClinicalDataSubmission />
       <PatientSymptomsSubmit />
       <PredictionButton />
       <RegisterPatientToDoctor />
       <SearchDoctors />
-      <SearchPatients />
-      <SendDeleteButton /> {/* Don't know what is this button use for */}
-      <UpdateDoctor />
-      <UpdateSymptoms />
-      <UpdateSymptomsByBothIds /> {/*same as the UpdateSymptoms for now */}
+      <SearchPatients /> */}
+      {/* <SendDeleteButton />  */}
+      {/* Don't know what is this button use for */}
+      {/* <UpdateDoctor />
+      <UpdateSymptoms /> */}
+      {/* <UpdateSymptomsByBothIds />  */}
+      {/*same as the UpdateSymptoms for now */}
 
-      <PatientContactInfo/>
+      {/* <PatientContactInfo/>
       <PatientGeneralInfo/>
-      <PatientProfileHeader/>
+      <PatientProfileHeader/>  */}
+
+      {/* <AdminHome /> */}
+      {/* <PatientHome/> */}
+      <DeleteDoctor />
+      <FetchAllDoctors />
+      <DeletePatient />
+      <DeleteSymptoms />
+      <DoctorExaminationDataSubmission />
+      <FetchAllPatients />
+      <PatientClinicalDataById />
+      <DoctorDataById />
+      <PatientExaminationDataById />
+      <PatientDataById />
+      <PatientSymptomDataById />
+      <DoctorPatients />
     </div>
   );
 }
