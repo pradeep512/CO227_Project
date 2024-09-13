@@ -81,6 +81,7 @@ import RegisterUser from "../pages/Register-patient-auth";
 import AdminDashboard from "../components/AdminComponents/AdminDashboard";
 import AdminPatients from "../components/AdminComponents/AdminPatients";
 import AdminMainLayout from "../components/layouts/AdminMainLayout";
+import ServicesPage from "../pages/ServicePgae";
 import PatientDashboard from "../components/PatientHomePageComponents/PatientDashboard";
 import PatientMainLayout from "../components/layouts/PatientMainLayout";
 import PatientMedicalInfo from "../components/PatientHomePageComponents/PatientMedicalInfo";
@@ -136,6 +137,7 @@ const AppRoutes = createBrowserRouter([
   { path: "/contact", element: <ContactUsPage /> },
   { path: "/register-patient", element: <RegisterPage /> },
   { path: "/register-user", element: <RegisterUser /> },
+  { path: "/services", element: <ServicesPage/>},
   { path: "/admin-dashboard", element: <AdminDashboard /> }, // Admin dashboard standalone route
   { path: "/patient-dashboard", element: <PatientDashboard /> }, // Patient dashboard standalone route
   { path: "/tests2", element: <Tests /> }, // Testing page route
