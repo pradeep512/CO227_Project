@@ -26,7 +26,7 @@ const AppRoutes = createBrowserRouter([
         element: <AdminDashboard />,
       },
       {
-        path:"patients/:patientId", // Patients page
+        path: "patients/:patientId", // Patients page
         element: <AdminPatients />,
       },
       {
@@ -53,16 +53,17 @@ const AppRoutes = createBrowserRouter([
     ],
   },
   { path: "/", element: <HomePage /> },
+  { path: "/login", element: <LoginPage /> },
+
   { path: "/about", element: <AboutPage /> },
   { path: "/doctors", element: <FetchAllDoctors /> },
   { path: "/contact", element: <ContactUsPage /> },
-  { path: "/login", element: <LoginPage /> },
   { path: "/register-patient", element: <RegisterPage /> },
   { path: "/register-user", element: <RegisterUser /> },
   { path: "/admin-dashboard", element: <AdminDashboard /> },
   { path: "/patient-dashboard", element: <PatientDashboard /> },
   { path: "/patient-dashboard", element: <PatientDashboard /> },
- 
+
   { path: "/tests2", element: <Tests /> },
 ]);
 
