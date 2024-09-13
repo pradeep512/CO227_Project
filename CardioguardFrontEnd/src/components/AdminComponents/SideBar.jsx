@@ -29,7 +29,7 @@ const Sidebar = () => {
           Dashboard
         </NavLink>
         <NavLink
-          to="/admin/patients/1"
+          to="/admin/patients"
           className={() =>
             `flex items-center py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg ${
               location.pathname.startsWith("/tests/patients")
