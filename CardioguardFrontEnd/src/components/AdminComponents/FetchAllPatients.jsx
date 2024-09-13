@@ -44,7 +44,7 @@ const FetchAllPatients = () => {
 
   // Function to handle row click
   const handleRowClick = (patientId) => {
-    navigate(`/findbypatientId?patientId=${patientId}`);
+    navigate(`/admin/patients/${patientId}`);
   };
 
   // Handle next page
