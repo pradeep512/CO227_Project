@@ -15,6 +15,7 @@ import PatientDashboard from "../components/PatientHomePageComponents/PatientDas
 import PatientMainLayout from "../components/layouts/PatientMainLayout";
 import PatientMedicalInfo from "../components/PatientHomePageComponents/PatientMedicalInfo";
 import AdminDoctors from "../components/AdminComponents/AdminDoctors";
+import MachineLearningData from "../components/MachineLerningDataForm";
 
 const AppRoutes = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const AppRoutes = createBrowserRouter([
       {
         path: "doctors", // Patients page
         element: <AdminDoctors />,
+      },
+      {
+        path: "prediction", // Patients page
+        element: <MachineLearningData />,
       },
       // Add more routes here, such as doctors, prediction, etc.
     ],
