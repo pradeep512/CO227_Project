@@ -224,9 +224,6 @@ const AdminDashboard = () => {
           <RevenueChart />
         </div>
       </div>
-      <div>
-        <FetchAllPatients />
-      </div>
       <div className="flex item-center justify-center space-x-4">
         <SearchPatients />
         <SearchDoctors />
