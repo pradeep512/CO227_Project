@@ -363,7 +363,7 @@ export default function MachineLearningData() {
 >
 
       <div className="bg-white shadow-lg rounded-lg p-10 w-full max-w-3xl"
-      style={{ background: "linear-gradient(to right, #bbbbbb, #aaaaaa)" }}>
+      style={{ background: "linear-gradient(to right, #cccccc, #aaaaaa)" }}>
         <h1 className="text-3xl font-bold text-center mb-8">
           The Prediction System - Evaluation of Patients
         </h1>
