@@ -87,6 +87,7 @@ import PatientMedicalInfo from "../components/PatientHomePageComponents/PatientM
 import AdminDoctors from "../components/AdminComponents/AdminDoctors";
 import AdminPatientInfoChange from "../pages/Admin/AdminPatientInfoChange"; // Import the new component
 
+
 const AppRoutes = createBrowserRouter([
   {
     path: "/admin",
@@ -111,7 +112,6 @@ const AppRoutes = createBrowserRouter([
       // You can add more admin routes here as needed
     ],
   },
-
   {
     path: "/patient",
     element: <PatientMainLayout />, // Patient layout with sidebar and topbar
