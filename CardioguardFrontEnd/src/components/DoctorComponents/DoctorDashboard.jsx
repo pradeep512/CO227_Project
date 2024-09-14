@@ -1,4 +1,3 @@
-
 const DoctorDashboard = () => {
     return (
       <div>
@@ -8,4 +7,4 @@ const DoctorDashboard = () => {
   };
   
   export default DoctorDashboard;
-  
+

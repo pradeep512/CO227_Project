@@ -93,6 +93,7 @@ import DoctorDoctors from "../components/DoctorComponents/DoctorDoctors";
 import DoctorPatients from "../components/DoctorComponents/DoctorPatients";
 
 
+
 const AppRoutes = createBrowserRouter([
   {
     path: "/admin",
