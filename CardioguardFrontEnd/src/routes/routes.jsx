@@ -87,6 +87,11 @@ import PatientMainLayout from "../components/layouts/PatientMainLayout";
 import PatientMedicalInfo from "../components/PatientHomePageComponents/PatientMedicalInfo";
 import AdminDoctors from "../components/AdminComponents/AdminDoctors";
 import AdminPatientInfoChange from "../pages/Admin/AdminPatientInfoChange"; // Import the new component
+import DoctorMainLayout from "../components/layouts/DoctorMainLayout";
+import DoctorDashboard from "../components/DoctorComponents/DoctorDashboard";
+import DoctorDoctors from "../components/DoctorComponents/DoctorDoctors";
+import DoctorPatients from "../components/DoctorComponents/DoctorPatients";
+
 
 
 const AppRoutes = createBrowserRouter([
@@ -126,6 +131,25 @@ const AppRoutes = createBrowserRouter([
         element: <PatientMedicalInfo />,
       },
       // Add more patient routes here if necessary
+    ],
+  },
+  {
+    path: "/doctor",
+    element: <DoctorMainLayout />, // Doctor layout with sidebar and topbar
+    children: [
+      {
+        path: "", // Doctor dashboard
+        element: <DoctorDashboard />,
+      },
+      {
+        path: "patients", // Doctor medical info page
+        element: <DoctorPatients />,
+      },
+      {
+        path: "doctors", // Doctors list page
+        element: <DoctorDoctors />,
+      },
+      // Add more doctor routes here if necessary
     ],
   },
   
