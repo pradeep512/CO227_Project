@@ -62,9 +62,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosClient from "../../../axios-client"; // Adjust the path as per your project structure
-import PatientExaminationDataById from "../../components/PatientHomePageComponents/PatientExaminationData";
-import PatientClinicalDataById from "../../components/PatientHomePageComponents/PatientClinicalData";
-import PatientSymptomDataById from "../../components/PatientHomePageComponents/PatientSymptomsData";
+import PatientExaminationDataById from "../../components/AdminComponents/PatientExaminationData";
+import PatientClinicalDataById from "../../components/AdminComponents/PatientClinicalData";
+import PatientSymptomDataById from "../../components/AdminComponents/PatientSymptomsData";
 
 const AdminPatientInfoChange = () => {
   const { patientId } = useParams(); // Get patientId from URL
@@ -153,10 +153,9 @@ const AdminPatientInfoChange = () => {
       )}
 
       <div>
-        <PatientExaminationDataById/>
-        <PatientClinicalDataById/>
-        <PatientSymptomDataById/>
-
+        <PatientExaminationDataById patientId={patientId} />
+        <PatientClinicalDataById patientId={patientId} />
+        <PatientSymptomDataById patientId={patientId} />
       </div>
     </div>
   );
