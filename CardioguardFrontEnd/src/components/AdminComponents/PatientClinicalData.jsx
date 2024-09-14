@@ -52,7 +52,6 @@ const PatientClinicalDataById = ({ patientId }) => {
   }, []); // Empty dependency array to only run once when the component mounts
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 to-orange-300">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-5xl">
         <h1 className="text-2xl font-bold text-center mb-6">Patient Clinical Data</h1>
 
@@ -153,7 +152,6 @@ const PatientClinicalDataById = ({ patientId }) => {
           <p className="text-gray-600 text-center">No clinical data available.</p>
         )}
       </div>
-    </div>
   );
 };
 
