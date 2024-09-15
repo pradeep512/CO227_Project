@@ -2,8 +2,10 @@ import { useState } from "react";
 import axiosClient from "../../axios-client";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import useStateContext from "../contexts/useStateContext";
 
 export default function LoginPage() {
+  const { setUser, setToken } = useStateContext();
   const navigate = useNavigate();
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -14,7 +16,7 @@ export default function LoginPage() {
   };
 
   const validatePassword = (password) => {
-    return password.length >= 6; // You can adjust the length requirement here
+    return password.length >= 3; // You can adjust the length requirement here
   };
 
   const handleSubmit = async (event) => {
@@ -52,16 +54,39 @@ export default function LoginPage() {
       username,
       password,
     };
+    console.log(loginData);
+    axiosClient
+      .post("/auth/login", loginData)
+      .then(({ data }) => {
+        let userdata = data.userRoles[0];
 
-    try {
-      const response = await axiosClient.post("/auth/login", loginData);
-      console.log("Login successful, navigating to homeusers page.");
-      const dataBackEnd = response.data;
-      console.log("Data from the backend:", dataBackEnd);
-      navigate("/tests");
-    } catch (error) {
-      console.error("There was an error with the login:", error);
-    }
+        setUser(userdata);
+        setToken(data.accessToken);
+
+        switch (userdata.role) {
+          case "ADMIN":
+            navigate("/admin");
+            break;
+          case "USER":
+            navigate("/patient");
+            break;
+          case "DOCTOR":
+            navigate("/doctor");
+            break;
+          default:
+            navigate("/");
+            break;
+        }
+
+        // navigate("/");
+      })
+      .catch(({ response }) => {
+        if (response && response.status === 401) {
+          console.error("username or password wrong!:", response);
+        } else {
+          console.error("There was an error with the login:", response);
+        }
+      });
   };
 
   return (

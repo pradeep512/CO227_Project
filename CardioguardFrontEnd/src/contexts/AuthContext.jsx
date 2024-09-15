@@ -1,39 +1,54 @@
-// AuthContext.jsx
+// StateContext.js
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 
-export const AuthContext = createContext();
+// Create the StateContext
+export const AuthContext = createContext({
+  user: null,
+  token: null,
+  setUser: () => {},
+  setToken: () => {},
+});
 
-export const AuthProvider = ({ children }) => {
-  const [authData, setAuthData] = useState(null);
-  const navigate = useNavigate();
+// ContextProvider component
+export const ContextProvider = ({ children }) => {
+  const storedUser = Cookies.get("_user");
+  const [user, _setUser] = useState(storedUser ? JSON.parse(storedUser) : null);
+  const [token, _setToken] = useState(Cookies.get("_auth"));
 
-  const login = (data) => {
-    setAuthData(data);
-    if (data.roles.includes("ADMIN")) {
-      navigate("/admin");
-    } else if (data.roles.includes("DOCTOR")) {
-      navigate("/doctor");
-    } else if (data.roles.includes("USER")) {
-      navigate("/patient");
+  const setToken = (token) => {
+    _setToken(token);
+    if (token) {
+      Cookies.set("_auth", token, { expires: 0.5 });
     } else {
-      navigate("/login");
+      Cookies.remove("_auth");
     }
   };
 
-  const logout = () => {
-    setAuthData(null);
-    navigate("/login");
+  const setUser = (user) => {
+    _setUser(user);
+    if (user) {
+      Cookies.set("_user", JSON.stringify(user), { expires: 0.5 });
+    } else {
+      Cookies.remove("_user");
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ authData, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        token,
+        setUser,
+        setToken,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
-AuthProvider.propTypes = {
+ContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
