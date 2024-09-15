@@ -54,7 +54,7 @@ const Sidebar = () => {
           <FiUser className="mr-3" />
           Doctors
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/admin/prediction"
           className={() =>
             `flex items-center py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg ${
@@ -66,7 +66,7 @@ const Sidebar = () => {
         >
           <FiHeart className="mr-3" />
           Predictions
-        </NavLink>
+        </NavLink> */}
 
       </nav>
     </div>
