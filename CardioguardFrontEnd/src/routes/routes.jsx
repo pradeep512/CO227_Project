@@ -138,15 +138,15 @@ const AppRoutes = createBrowserRouter([
     element: <DoctorMainLayout />, // Doctor layout with sidebar and topbar
     children: [
       {
-        path: "", // Doctor dashboard
+        path: ":id", // Doctor dashboard with dynamic id
         element: <DoctorDashboard />,
       },
       {
-        path: "patients", // Doctor medical info page
+        path: ":id/patients", // Doctor's patients page with dynamic id
         element: <DoctorPatients />,
       },
       {
-        path: "doctors", // Doctors list page
+        path: ":id/doctors", // Doctor's list of other doctors with dynamic id
         element: <DoctorDoctors />,
       },
       // Add more doctor routes here if necessary
