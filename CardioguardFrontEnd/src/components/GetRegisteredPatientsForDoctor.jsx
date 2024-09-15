@@ -38,7 +38,7 @@ const DoctorPatients = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 to-orange-300">
+    
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-6xl">
         <h1 className="text-2xl font-bold text-center mb-6">
           Patients Registered to Doctor
@@ -102,7 +102,6 @@ const DoctorPatients = () => {
           </div>
         )}
       </div>
-    </div>
   );
 };
 
