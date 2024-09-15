@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { FiGrid, FiUser, FiUsers, FiHeart } from "react-icons/fi";
-
+import { FiGrid, FiUser, FiUsers } from "react-icons/fi";
 
 const Sidebar = () => {
   const location = useLocation(); // Get the current path
@@ -19,9 +18,7 @@ const Sidebar = () => {
           to="/admin"
           className={() =>
             `flex items-center py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg ${
-              location.pathname === "/tests"
-                ? "bg-[#A9F0E4] text-[#2C3746]"
-                : ""
+              location.pathname === "/admin" ? "bg-gray-100 text-gray-600" : ""
             }`
           }
         >
@@ -32,21 +29,21 @@ const Sidebar = () => {
           to="/admin/patients"
           className={() =>
             `flex items-center py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg ${
-              location.pathname.startsWith("/tests/patients")
-                ? "bg-[#A9F0E4] text-[#2C3746]"
+              location.pathname === "/admin/patients"
+                ? "bg-gray-100 text-gray-600"
                 : ""
             }`
           }
         >
           <FiUsers className="mr-3" />
-          Patient
+          Patients
         </NavLink>
         <NavLink
           to="/admin/doctors"
           className={() =>
             `flex items-center py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg ${
-              location.pathname.startsWith("/doctors")
-                ? "bg-[#A9F0E4] text-[#2C3746]"
+              location.pathname === "/admin/doctors"
+                ? "bg-gray-100 text-gray-600"
                 : ""
             }`
           }
@@ -54,20 +51,6 @@ const Sidebar = () => {
           <FiUser className="mr-3" />
           Doctors
         </NavLink>
-        {/* <NavLink
-          to="/admin/prediction"
-          className={() =>
-            `flex items-center py-3 px-4 text-gray-600 hover:bg-gray-100 rounded-lg ${
-               location.pathname.startsWith("/prediction")
-               ? "bg-[#A9F0E4] text-[#2C3746]" 
-               : ""
-            }`
-          }
-        >
-          <FiHeart className="mr-3" />
-          Predictions
-        </NavLink> */}
-
       </nav>
     </div>
   );
