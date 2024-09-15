@@ -55,7 +55,7 @@ const SearchDoctors = ({ onSelectDoctor }) => {
   };
 
   return (
-    <div className="w-1/2 mx-auto p-4 shadow-lg rounded-lg bg-white">
+    <div className="w-full mx-auto p-4 shadow-lg rounded-lg bg-white">
       <div className="w-full">
         <h1 className="text-2xl font-bold p-4">Doctors</h1>
         <input

@@ -91,7 +91,7 @@ import DoctorMainLayout from "../components/layouts/DoctorMainLayout";
 import DoctorDashboard from "../components/DoctorComponents/DoctorDashboard";
 import DoctorDoctors from "../components/DoctorComponents/DoctorDoctors";
 import DoctorPatients from "../components/DoctorComponents/DoctorPatients";
-
+import CreateDoctorForm from "../components/AdminComponents/AddingDoctor"; // Adjust the path as needed
 
 
 const AppRoutes = createBrowserRouter([

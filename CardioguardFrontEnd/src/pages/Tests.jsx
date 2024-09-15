@@ -80,6 +80,7 @@ export default function Tests() {
       <PatientDataById />
       <PatientSymptomDataById />
       <DoctorPatients />
+      <RegisterPatientToDoctor />
     </div>
   );
 }
