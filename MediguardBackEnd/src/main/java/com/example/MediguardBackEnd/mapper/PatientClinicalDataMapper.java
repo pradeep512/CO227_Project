@@ -21,7 +21,9 @@ public class PatientClinicalDataMapper {
                 patientClinicalData.getSerumCreatinine(),
                 patientClinicalData.getSerumSodium(),
                 patientClinicalData.isSmoking(),
-                patientClinicalData.getFollowUpPeriodDays()
+                patientClinicalData.getFollowUpPeriodDays(),
+                patientClinicalData.getClinicalDate()
+
         );
     }
 
@@ -41,7 +43,10 @@ public class PatientClinicalDataMapper {
                 patientClinicalDataDTO.getSerumCreatinine(),
                 patientClinicalDataDTO.getSerumSodium(),
                 patientClinicalDataDTO.isSmoking(),
-                patientClinicalDataDTO.getFollowUpPeriodDays()
+                patientClinicalDataDTO.getFollowUpPeriodDays(),
+                patientClinicalDataDTO.getClinicalDate()
+
+
         );
     }
 }
