@@ -1,5 +1,7 @@
 package com.example.MediguardBackEnd.domains;
 
+import java.util.Date;
+
 public class PatientClinicalDataDTO {
 
     private Long clinicalDataId;
@@ -14,11 +16,12 @@ public class PatientClinicalDataDTO {
     private int serumSodium;
     private boolean smoking;
     private int followUpPeriodDays;
+    private Date clinicalDate;
 
     public PatientClinicalDataDTO() {
     }
 
-    public PatientClinicalDataDTO(Long clinicalDataId, boolean diagnosisOfHeartDisease, boolean presenceOfAnemia, int creatininePhosphokinase, boolean diabetes, int ejectionFraction, int bloodPressure, int platelets, int serumCreatinine, int serumSodium, boolean smoking, int followUpPeriodDays) {
+    public PatientClinicalDataDTO(Long clinicalDataId, boolean diagnosisOfHeartDisease, boolean presenceOfAnemia, int creatininePhosphokinase, boolean diabetes, int ejectionFraction, int bloodPressure, int platelets, int serumCreatinine, int serumSodium, boolean smoking, int followUpPeriodDays, Date clinicalDate) {
         this.clinicalDataId = clinicalDataId;
         this.diagnosisOfHeartDisease = diagnosisOfHeartDisease;
         this.presenceOfAnemia = presenceOfAnemia;
@@ -31,6 +34,7 @@ public class PatientClinicalDataDTO {
         this.serumSodium = serumSodium;
         this.smoking = smoking;
         this.followUpPeriodDays = followUpPeriodDays;
+        this.clinicalDate = clinicalDate;
     }
 
     public Long getClinicalDataId() {
@@ -129,9 +133,17 @@ public class PatientClinicalDataDTO {
         this.followUpPeriodDays = followUpPeriodDays;
     }
 
+    public Date getClinicalDate() {
+        return clinicalDate;
+    }
+
+    public void setClinicalDate(Date clinicalDate) {
+        this.clinicalDate = clinicalDate;
+    }
+
     @Override
     public String toString() {
-        return "PatientClinicalData{" +
+        return "PatientClinicalDataDTO{" +
                 "clinicalDataId=" + clinicalDataId +
                 ", diagnosisOfHeartDisease=" + diagnosisOfHeartDisease +
                 ", presenceOfAnemia=" + presenceOfAnemia +
@@ -144,6 +156,7 @@ public class PatientClinicalDataDTO {
                 ", serumSodium=" + serumSodium +
                 ", smoking=" + smoking +
                 ", followUpPeriodDays=" + followUpPeriodDays +
+                ", clinicalDate=" + clinicalDate +
                 '}';
     }
 }

@@ -27,9 +27,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -60,27 +58,36 @@ public class AuthenticationController {
     }
 
     @PostMapping("login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginDTO loginDTO , BindingResult bindingResult){
+    public ResponseEntity<?> login(@Valid @RequestBody LoginDTO loginDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getFieldErrors(), HttpStatus.BAD_REQUEST);
         }
+        System.out.println();
         UserEntity user = userRepository.findByUsername(loginDTO.getUsername())
-                .orElseThrow(()->
+                .orElseThrow(() ->
                         new ResourceNotFoundException("User does not exist!"));
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginDTO.getUsername(),loginDTO.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
 
         List<String> roles = user.getRoles().stream().map(Role::getName).toList();
-        return new ResponseEntity<>(new AuthenticationResponseDTO(token, (long) user.getId(),roles),HttpStatus.OK);
+
+        List<Map<String, Object>> userRoles = user.getRoles().stream().map(role -> {
+            Map<String, Object> map = new HashMap<>();
+            map.put("user", user.getId());
+            map.put("role", role.getName());
+            return map;
+        }).toList();
+
+        return new ResponseEntity<>(new AuthenticationResponseDTO(token, (long) user.getId(), roles, userRoles), HttpStatus.OK);
     }
 
     @PostMapping("register/patient/{patientId}")
-    public ResponseEntity<String> registerPatient(@Valid @RequestBody RegisterDTO registerDTO, @PathVariable long patientId){
+    public ResponseEntity<String> registerPatient(@Valid @RequestBody RegisterDTO registerDTO, @PathVariable long patientId) {
 
-        if(userRepository.existsByUsername(registerDTO.getUsername())){
+        if (userRepository.existsByUsername(registerDTO.getUsername())) {
             return new ResponseEntity<>("Username is taken!", HttpStatus.CONFLICT);
         }
 
@@ -107,13 +114,13 @@ public class AuthenticationController {
 
         userRepository.save(user);
 
-        return new ResponseEntity<>("User Registered successfully!",HttpStatus.OK);
+        return new ResponseEntity<>("User Registered successfully!", HttpStatus.OK);
     }
 
     @PostMapping("register/doctor/{doctorId}")
-    public ResponseEntity<String> registerDoctor(@Valid @RequestBody RegisterDTO registerDTO, @PathVariable long doctorId){
+    public ResponseEntity<String> registerDoctor(@Valid @RequestBody RegisterDTO registerDTO, @PathVariable long doctorId) {
 
-        if(userRepository.existsByUsername(registerDTO.getUsername())){
+        if (userRepository.existsByUsername(registerDTO.getUsername())) {
             return new ResponseEntity<>("Username is taken!", HttpStatus.CONFLICT);
         }
 
@@ -140,6 +147,6 @@ public class AuthenticationController {
 
         userRepository.save(user);
 
-        return new ResponseEntity<>("User Registered successfully!",HttpStatus.OK);
+        return new ResponseEntity<>("User Registered successfully!", HttpStatus.OK);
     }
 }
