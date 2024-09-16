@@ -4,10 +4,7 @@ import com.example.MediguardBackEnd.domains.DoctorDTO;
 import com.example.MediguardBackEnd.domains.PatientClinicalDataDTO;
 import com.example.MediguardBackEnd.domains.PatientDTO;
 import com.example.MediguardBackEnd.exception.DuplicateException;
-import com.example.MediguardBackEnd.services.DoctorService;
-import com.example.MediguardBackEnd.services.PatientClinicalDataService;
-import com.example.MediguardBackEnd.services.PatientService;
-import com.example.MediguardBackEnd.services.UserService;
+import com.example.MediguardBackEnd.services.*;
 import com.example.MediguardBackEnd.services.servicesImpl.PatientClinicalDataServiceImpl;
 import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
@@ -26,11 +23,14 @@ public class DoctorController {
     private final PatientService patientService;
     private final PatientClinicalDataService clinicalDataService;
 
+    private final PatientSymptomsService patientSymptomsService;
 
-    public DoctorController(DoctorService doctorService, PatientService patientService, PatientClinicalDataService clinicalDataService) {
+
+    public DoctorController(DoctorService doctorService, PatientService patientService, PatientClinicalDataService clinicalDataService, PatientSymptomsService patientSymptomsService) {
         this.doctorService = doctorService;
         this.patientService = patientService;
         this.clinicalDataService = clinicalDataService;
+        this.patientSymptomsService = patientSymptomsService;
     }
 
 
@@ -107,4 +107,7 @@ public class DoctorController {
         List<PatientClinicalDataDTO> clinicalDataList = clinicalDataService.getClinicalDataByPatientId(patientId);
         return ResponseEntity.ok(clinicalDataList);
     }
+
+
+
 }
