@@ -21,6 +21,7 @@ const CalendarComponent = () => {
       <p className="text-center mt-4">
         <strong>Selected Date:</strong> {selectedDate.toDateString()}
       </p>
+
     </div>
   );
 };
