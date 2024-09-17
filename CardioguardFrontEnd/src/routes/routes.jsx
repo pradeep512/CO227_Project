@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import AboutPage from "../pages/AboutPage";
 import FetchAllDoctors from "../components/AllDoctors";
 import HomePage from "../pages/HomePage";
-import Tests from "../pages/Tests";
 import ContactUsPage from "../pages/ContactUsPage";
 import LoginPage from "../pages/Login";
 import RegisterPage from "../pages/PatientRegisterPage";
@@ -16,7 +15,7 @@ import PatientDashboard from "../components/PatientComponents/PatientDashboard";
 import PatientMainLayout from "../components/layouts/PatientMainLayout";
 import PatientMedicalInfo from "../components/PatientComponents/PatientMedicalInfo";
 import AdminDoctors from "../components/AdminComponents/AdminDoctors";
-import AdminPatientInfoChange from "../pages/Admin/AdminPatientInfoChange"; // Import the new component
+import AdminPatientInfoChange from "../pages/Admin/AdminPatientInfoChange";
 import DoctorDashboard from "../components/DoctorComponents/DoctorDashboard";
 import GetDoctorsPatients from "../components/DoctorComponents/DoctorFunctionlities/GetDoctorsPatients";
 import MedicalInfo from "../components/DoctorComponents/DoctorFunctionlities/DoctorsPatientDetails/MedicalInfo";
@@ -92,9 +91,6 @@ const AppRoutes = createBrowserRouter([
   { path: "/register-patient", element: <RegisterPage /> },
   { path: "/register-user", element: <RegisterUser /> },
   { path: "/services", element: <ServicesPage /> },
-  { path: "/admin-dashboard", element: <AdminDashboard /> }, // Admin dashboard standalone route
-  { path: "/patient-dashboard", element: <PatientDashboard /> }, // Patient dashboard standalone route
-  { path: "/tests2", element: <Tests /> }, // Testing page route
 ]);
 
 export default AppRoutes;
