@@ -20,7 +20,9 @@ import AdminPatientInfoChange from "../pages/Admin/AdminPatientInfoChange"; // I
 import DoctorDashboard from "../components/DoctorComponents/DoctorDashboard";
 import GetDoctorsPatients from "../components/DoctorComponents/DoctorFunctionlities/GetDoctorsPatients";
 import MedicalInfo from "../components/DoctorComponents/DoctorFunctionlities/DoctorsPatientDetails/MedicalInfo";
+import UpdateSymptoms from "../components/UpdateSymptoms";
 import PatientDoctors from "../components/PatientComponents/PatientDoctors";
+
 
 const AppRoutes = createBrowserRouter([
   {
@@ -80,6 +82,12 @@ const AppRoutes = createBrowserRouter([
       {
         path: "/doctor/patients/:patientId",
         element: <MedicalInfo />,
+      },
+
+
+      {
+        path: "/doctor/patients/:patientId/update-symptoms/:symptomCode",
+        element: <UpdateSymptoms />, // Replace with your actual UpdateSymptoms component
       },
     ],
   },
