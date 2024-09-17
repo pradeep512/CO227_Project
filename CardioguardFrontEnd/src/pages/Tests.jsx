@@ -35,7 +35,7 @@ export default function Tests() {
   return (
     <div>
       {/* <NavBar />
-      <MachineLearningData />
+      
       <DeleteDoctor />
       <FetchAllDoctors />
       <DeletePatient />
@@ -68,6 +68,7 @@ export default function Tests() {
 
       {/* <AdminHome /> */}
       {/* <PatientHome/> */}
+      
       <DeleteDoctor />
       <FetchAllDoctors />
       <DeletePatient />
