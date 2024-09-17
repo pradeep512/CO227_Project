@@ -12,14 +12,15 @@ import AdminPatients from "../components/AdminComponents/AdminPatients";
 import AdminMainLayout from "../components/layouts/AdminMainLayout";
 import DoctorMainLayout from "../components/layouts/DoctorMainLayout";
 import ServicesPage from "../pages/ServicePgae";
-import PatientDashboard from "../components/PatientHomePageComponents/PatientDashboard";
+import PatientDashboard from "../components/PatientComponents/PatientDashboard";
 import PatientMainLayout from "../components/layouts/PatientMainLayout";
-import PatientMedicalInfo from "../components/PatientHomePageComponents/PatientMedicalInfo";
+import PatientMedicalInfo from "../components/PatientComponents/PatientMedicalInfo";
 import AdminDoctors from "../components/AdminComponents/AdminDoctors";
 import AdminPatientInfoChange from "../pages/Admin/AdminPatientInfoChange"; // Import the new component
 import DoctorDashboard from "../components/DoctorComponents/DoctorDashboard";
 import GetDoctorsPatients from "../components/DoctorComponents/DoctorFunctionlities/GetDoctorsPatients";
 import MedicalInfo from "../components/DoctorComponents/DoctorFunctionlities/DoctorsPatientDetails/MedicalInfo";
+import PatientDoctors from "../components/PatientComponents/PatientDoctors";
 
 const AppRoutes = createBrowserRouter([
   {
@@ -54,9 +55,13 @@ const AppRoutes = createBrowserRouter([
         element: <PatientDashboard />,
       },
       {
-        path: "patients", // Patient medical info page
+        path: "medicalinfo", // Patient medical info page
         element: <PatientMedicalInfo />,
       },
+      {
+        path: "doctors", // Doctors list page
+        element: <PatientDoctors/>,
+      }
       // Add more patient routes here if necessary
     ],
   },
@@ -81,7 +86,6 @@ const AppRoutes = createBrowserRouter([
 
   { path: "/", element: <HomePage /> },
   { path: "/login", element: <LoginPage /> },
-
   { path: "/about", element: <AboutPage /> },
   { path: "/doctors", element: <FetchAllDoctors /> },
   { path: "/contact", element: <ContactUsPage /> },
